@@ -18,8 +18,8 @@ import javax.swing.JPanel;
 import javax.swing.JTextField;
 import SQL.connection;
 
-public class AdminMoney_매출미구현 extends JPanel {
-	AdminMoney_매출미구현() {
+public class Sales extends JPanel {
+	Sales() {
 
 		this.setBackground(Color.white);
 		JLabel l2 = new JLabel("월 매출 검색 : ");
@@ -49,6 +49,6 @@ public class AdminMoney_매출미구현 extends JPanel {
 	
 	
 	public static void main(String [] args) {
-		new AdminMoney_매출미구현();
+		new Sales();
 	}
 }

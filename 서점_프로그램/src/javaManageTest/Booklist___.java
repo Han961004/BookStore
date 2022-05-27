@@ -46,8 +46,7 @@ public class Booklist___ extends JPanel {
                 li.add(str); // 리스트에 데이터를 추가한다.
     		}
         }catch(SQLException sqle){
-            System.out.println("SQLException: " + sqle.getMessage());
-            System.out.println("SQLState: " + sqle.getSQLState());
+            
         }
         p.add(li);
         add(p);

@@ -8,7 +8,7 @@ import javax.swing.JPanel;
 
 public class InfoPanel extends JPanel {
 	JButton btn1, btn2;
-	__TopUserPanel top = new __TopUserPanel();
+	TopUserPanel top = new TopUserPanel();
 
 	InfoPanel() {
 		this.setBackground(Color.white);

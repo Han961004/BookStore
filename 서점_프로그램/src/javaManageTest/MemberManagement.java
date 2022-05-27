@@ -21,17 +21,17 @@ import javax.swing.JTextField;
 
 import SQL.connection;
 
-public class PersonalImformation extends JPanel {
+public class MemberManagement extends JPanel {
 
-	PersonalImformation() {
+	MemberManagement() {
 		this.setBackground(Color.white);
 		
 		//이름 검색해서 주문 번호와 책재목 가격 구매날짜가 나와야 함
 		
-		JLabel l1 = new JLabel("이름 검색 : ");
+		JLabel l1 = new JLabel("회원이름 : ");
 		JTextField tf1 = new JTextField(10);
-		JButton btn1 = new JButton("검 색");
-		JButton btn2 = new JButton("수  정");
+		JButton btn1 = new JButton("검색");
+		JButton btn2 = new JButton("수정");
 		
 		Panel p = new Panel();
 		p.setLayout(null);
@@ -53,9 +53,6 @@ public class PersonalImformation extends JPanel {
 		
 		ActionListener listener1 = e -> {
 
-		    JButton btn = (JButton) e.getSource();
-			FrameTest test = (FrameTest) btn.getTopLevelAncestor();
-			
 			if(e.getSource() == btn1) {			// 입력완료 누르면
 				
 				String uname = tf1.getText();
@@ -88,12 +85,7 @@ public class PersonalImformation extends JPanel {
 					e1.printStackTrace();
 				}
 			} else if(e.getSource() == btn2) {
-				
-				
-				new AdminMemFix();
-		        //
-		        
-		        
+				new MemberFix();
 			}
 		};
 		btn1.addActionListener(listener1);

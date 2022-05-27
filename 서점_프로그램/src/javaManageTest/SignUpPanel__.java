@@ -8,7 +8,7 @@ import javax.swing.*;
 import SQL.connection;
 
 public class SignUpPanel__ extends JPanel {
-	__TopUserPanel top = new __TopUserPanel();
+	TopUserPanel top = new TopUserPanel();
 
 	SignUpPanel__() {
 
@@ -87,7 +87,7 @@ public class SignUpPanel__ extends JPanel {
 				
 				Connection con = connection.makeConnection();
 	    		String sql = null;
-	    		ResultSet rs = null; 
+	    		 
 	    		PreparedStatement pstmt = null;
 	    		
 	    		sql = "insert into members values (?,?,?,?,?,?);";

@@ -23,7 +23,7 @@ import javaManageTest.InfoPanel.MyActionListener;
 
 public class LoginPanel__ extends JPanel {
 	
-	__TopUserPanel top = new __TopUserPanel();
+	TopUserPanel top = new TopUserPanel();
 
 	LoginPanel__() {
 

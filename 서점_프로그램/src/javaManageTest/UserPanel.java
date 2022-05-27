@@ -11,7 +11,7 @@ import javax.swing.JPanel;
 import javax.swing.border.LineBorder;
 
 public class UserPanel extends JPanel {
-	__TopUserPanel top = new __TopUserPanel();
+	TopUserPanel top = new TopUserPanel();
 	JButton btn1, btn2;
 	Container c;
 

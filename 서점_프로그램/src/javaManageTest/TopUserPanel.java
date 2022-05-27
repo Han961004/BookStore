@@ -6,18 +6,24 @@ import java.awt.event.ActionListener;
 import javax.swing.JButton;
 import javax.swing.JPanel;
 
-public class __TopAdminPanel extends JPanel {
+public class TopUserPanel extends JPanel {
 	JButton btn0, btn1, btn2, btn3, btn4;
 
-	__TopAdminPanel() {
+	TopUserPanel() {
 		this.setLayout(new GridLayout(0, 5));
-		btn0 = new JButton("도서추가");
-		btn1 = new JButton("도서수정");
-		btn2 = new JButton("주문목록");
-		btn3 = new JButton("고객정보");
+		btn0 = new JButton("도서목록");
+		btn1 = new JButton("도서검색");
+		btn2 = new JButton("도서주문");
+		btn3 = new JButton("주문목록");
 		btn4 = new JButton("로그아웃");
 
 		this.setVisible(true);
+
+		this.add(btn0);
+		this.add(btn1);
+		this.add(btn2);
+		this.add(btn3);
+		this.add(btn4);
 
 		MyActionListener l = new MyActionListener();
 
@@ -26,16 +32,7 @@ public class __TopAdminPanel extends JPanel {
 		btn2.addActionListener(l);
 		btn3.addActionListener(l);
 		btn4.addActionListener(l);
-		
-		this.add(btn0);
-		this.add(btn1);
-		this.add(btn2);
-		this.add(btn3);
-		this.add(btn4);
-		
-		this.revalidate();
 
-		
 	}
 
 	class MyActionListener implements ActionListener {
@@ -48,22 +45,21 @@ public class __TopAdminPanel extends JPanel {
 			FrameTest test = (FrameTest) btn.getTopLevelAncestor();
 
 			switch (btn.getText()) {
-			case "도서추가":
-				test.viewScreen3(new AddBookPanel__());
+			case "도서목록":
+				test.viewScreen2(new Booklist___());
 				break;
-			case "도서수정":
-				test.viewScreen3(new AdminBookSearch__());
+			case "도서검색":
+				test.viewScreen2(new UserBookSearch__());
+				break;
+			case "도서주문":
+				//test.viewScreen2(new UserOrderList__());
 				break;
 			case "주문목록":
-				test.viewScreen3(new AdminOrderList__());
+				test.viewScreen2(new UserOrderList__());
 				break;
-			case "고객정보":
-				test.viewScreen3(new PersonalImformation());
+			case "로그아웃":										// 변경
+				test.viewScreen(new InfoPanel());
 				break;
-			case "로그아웃":
-				test.viewScreen(new InfoPanel());						// 변경
-				break;
-
 			}
 		}
 	}

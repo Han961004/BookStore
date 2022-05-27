@@ -18,17 +18,20 @@ public class AfterLoginPanel extends JPanel {
 		this.setLayout(new BorderLayout());
 		btn1 = new JButton("로그인");
 		btn2 = new JButton("회원가입");
-
+		
+		
 		this.add(btn1);
 		this.add(btn2);
-
+		
 		MyActionListener l = new MyActionListener();
 	
 		btn1.addActionListener(l);
 		btn2.addActionListener(l);
+		
+		
+
 	}
 
-	
 
 	class MyActionListener implements ActionListener {
 
@@ -39,12 +42,15 @@ public class AfterLoginPanel extends JPanel {
 
 			FrameTest test = (FrameTest) btn.getTopLevelAncestor();
 
+			
 			switch (btn.getText()) {
 			case "로그인":
 				test.viewScreen(new UserLogin());
+				
 				break;
 			case "회원가입":
 				test.viewScreen(new SignUpPanel__());
+				
 				break;
 			}
 		}

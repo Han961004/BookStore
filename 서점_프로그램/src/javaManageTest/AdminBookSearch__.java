@@ -20,7 +20,7 @@ import javax.swing.JTextField;
 import SQL.connection;
 
 public class AdminBookSearch__ extends JPanel {
-	__TopUserPanel top = new __TopUserPanel();
+	TopUserPanel top = new TopUserPanel();
 	JTextField tf, text, text1, text2, text3, text4, text5;
 	
 	AdminBookSearch__(){
