@@ -52,6 +52,9 @@ public class PersonalImformation extends JPanel {
 		
 		
 		ActionListener listener1 = e -> {
+
+		    JButton btn = (JButton) e.getSource();
+			FrameTest test = (FrameTest) btn.getTopLevelAncestor();
 			
 			if(e.getSource() == btn1) {			// 입력완료 누르면
 				
@@ -87,87 +90,7 @@ public class PersonalImformation extends JPanel {
 			} else if(e.getSource() == btn2) {
 				
 				
-				
-				
-				
-				
-				
-				
-				// 새창에 수정하기 JFrame
-				JTextField text, text1, text2, text3, text4, text5;
-				
-				JFrame window = new JFrame("고객 정보 수정하기");
-		        window.setBounds(800, 100, 500, 400);
-		        
-		        window.setBackground(Color.white);
-		        window.setLayout(null);
-				
-				JLabel lbl = new JLabel("수정 할 책 번호 :");
-				lbl.setBounds(120, 20, 120, 20);
-				text = new JTextField(30);
-				text.setBounds(220, 20, 120, 20);
-
-				JLabel lbl1 = new JLabel("저        자 :");
-				lbl1.setBounds(150, 60, 120, 20);
-				text1 = new JTextField(20);
-				text1.setBounds(220, 60, 120, 20);
-				
-				JLabel lbl2 = new JLabel("제        목 :");
-				lbl2.setBounds(150, 100, 120, 20);
-				text2 = new JTextField(20);
-				text2.setBounds(220, 100, 120, 20);
-				
-				JLabel lbl3 = new JLabel("출  판  사 :");
-				lbl3.setBounds(150, 140, 120, 20);
-				text3 = new JTextField(20);
-				text3.setBounds(220, 140, 120, 20);
-				
-				JLabel lbl4 = new JLabel("가        격 :");
-				lbl4.setBounds(150, 180, 120, 20);
-				text4 = new JTextField(20);
-				text4.setBounds(220, 180, 120, 20);
-				
-				JLabel lbl5 = new JLabel("재        고 :");
-				lbl5.setBounds(150, 220, 120, 20);
-				text5 = new JTextField(20);
-				text5.setBounds(220, 220, 120, 20);
-
-				JButton btn5 = new JButton("확인");
-				btn5.setBounds(350, 20, 90, 20);
-
-				JButton btn6 = new JButton("수정완료");
-				btn6.setBounds(80, 260, 120, 20);
-				
-				JButton btn7 = new JButton("삭제하기");
-				btn7.setBounds(320, 260, 120, 20);
-				
-				
-				
-				window.add(lbl);
-				window.add(text);
-				window.add(lbl1);
-				window.add(text1);
-				window.add(lbl2);
-				window.add(text2);
-				window.add(lbl3);
-				window.add(text3);
-				window.add(lbl4);
-				window.add(text4);
-				window.add(lbl5);
-				window.add(text5);
-				window.add(btn5);
-				window.add(btn6);
-				window.add(btn7);
-		        
-		        
-		        
-		        window.setVisible(true);
-		        
-		        
-		        
-		        
-		        
-		        
+				new AdminMemFix();
 		        //
 		        
 		        
