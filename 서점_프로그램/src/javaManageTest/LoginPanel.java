@@ -23,8 +23,9 @@ import javaManageTest.InfoPanel.MyActionListener;
 
 public class LoginPanel extends JPanel {
 	
-	LogInfoSave info = new LogInfoSave();
+	InfoSave info = new InfoSave();
 	
+	JLabel img = new JLabel();
 	
 	LoginPanel() {
 
@@ -65,7 +66,7 @@ public class LoginPanel extends JPanel {
 			// 패스워드 어디감???????????????????????
 			
 			JButton btn = (JButton) e.getSource();
-			FrameTest test = (FrameTest) btn.getTopLevelAncestor();
+			__FrameTest__ test = (__FrameTest__) btn.getTopLevelAncestor();
 			String id = text1.getText();
 			String pw = text2.getText();
 			
@@ -89,7 +90,7 @@ public class LoginPanel extends JPanel {
 	    				if (rs.getString(1).contentEquals(id)) {
 	    					
 	    					info.setPublicid(id);
-	    					System.out.println(info.getPublicid());
+	    					
 	    					JOptionPane.showMessageDialog(this, "회원 로그인 성공", "로그인성공", 1); // 로그인 성공
 	    					
 	    					test.viewScreen2(new UserPanel());

@@ -29,12 +29,12 @@ public class MemberFix extends JPanel {
 	    window.setBackground(Color.white);
 	    window.setLayout(null);
 		
-		JLabel lbl = new JLabel("수정 할 사 람 :");
-		lbl.setBounds(130, 50, 120, 20);
+		JLabel lbl = new JLabel("아    이   디 :");
+		lbl.setBounds(150, 50, 120, 20);
 		text = new JTextField(30);
 		text.setBounds(220, 50, 120, 20);
 	
-		JLabel lbl1 = new JLabel("아   이   디 :");
+		JLabel lbl1 = new JLabel("이        름 :");
 		lbl1.setBounds(150, 90, 120, 20);
 		text1 = new JTextField(20);
 		text1.setBounds(220, 90, 120, 20);
@@ -90,14 +90,14 @@ public class MemberFix extends JPanel {
 	    
 	    ActionListener listener1 = e -> {
 			
-	    	String uname = text.getText();
-			String id = text1.getText();
+	    	String id = text.getText();
+			String uname = text1.getText();
 			String pw = text2.getText();
 			String age = text3.getText();
 			String tel = text4.getText();
 			String address = text5.getText();
 			
-			if(e.getSource() == btn5) {			// 회원가입 누르면
+			if(e.getSource() == btn5) {			// 확인 누르면
 				
 				
 				Connection con = connection.makeConnection();
@@ -107,11 +107,11 @@ public class MemberFix extends JPanel {
 	    		
 	    		
 	    		try {
-	    			sql = "select * from members where uname = '" + uname + "';";
+	    			sql = "select * from members where id = '" + id + "';";
 		    		pstmt = con.prepareStatement(sql);
 		    		rs = pstmt.executeQuery();
 		    		rs.next();
-		    		text1.setText(rs.getNString(1));
+		    		text1.setText(rs.getNString(3));
 		    		text2.setText(rs.getNString(2));
 					text3.setText(rs.getNString(4));
 					text4.setText(rs.getNString(5));
@@ -128,16 +128,16 @@ public class MemberFix extends JPanel {
 	    		String sql = null;
 	    		PreparedStatement pstmt = null;
 	    		
-	    		sql = "update members set id = ?, pw = ?, age = ?, tel = ?, address = ? where (uname = ?);";
+	    		sql = "update members set uname = ?, pw = ?, age = ?, tel = ?, address = ? where (id = ?);";
 	    		try {
 	    			
 	    			pstmt = con.prepareStatement(sql);
-	    			pstmt.setString(1, id);
+	    			pstmt.setString(1, uname);
 	    			pstmt.setString(2, pw);
 	    			pstmt.setString(3, age);
 	    			pstmt.setString(4, tel);
 	    			pstmt.setString(5, address);
-	    			pstmt.setString(6, uname);
+	    			pstmt.setString(6, id);
 	    			pstmt.execute();
 	    			
 	    			JOptionPane.showMessageDialog(this, "갱신 성공", "갱신성공", 1);
@@ -152,11 +152,11 @@ public class MemberFix extends JPanel {
 	    		String sql = null;
 	    		PreparedStatement pstmt = null;
 	    		
-	    		sql = "delete from members where uname = ?;";
+	    		sql = "delete from members where id = ?;";
 	    		
 	    		try {
 	    			pstmt = con.prepareStatement(sql);
-	    			pstmt.setString(1, uname);
+	    			pstmt.setString(1, id);
 	    			
 	    			pstmt.execute();
 	    			

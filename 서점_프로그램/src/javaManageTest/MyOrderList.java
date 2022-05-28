@@ -13,9 +13,12 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.Scanner;
 import javax.swing.JButton;
+import javax.swing.JFrame;
 import javax.swing.JLabel;
+import javax.swing.JList;
 import javax.swing.JOptionPane;
 import javax.swing.JPanel;
+import javax.swing.JScrollPane;
 import javax.swing.JTextField;
 import javaManageTest.*;
 import SQL.connection;
@@ -26,7 +29,6 @@ public class MyOrderList extends JPanel {
 	MyOrderList() {
 		
 		this.setBackground(Color.white);
-		
 		JButton btn2 = new JButton("주문수정");
 		
 		Panel p = new Panel();
@@ -35,14 +37,14 @@ public class MyOrderList extends JPanel {
 
 		List li = new List();
 		li.setBounds(0, 20, 450, 250);
-		li.removeAll(); // 리스트 내용을 전부 제거한다.
+		li.removeAll(); // 리스트 내용을 전부 제거한다.0
 
 		add(btn2);
 		p.add(li);
 		add(p);
 		
 		
-		String id = LogInfoSave.getPublicid();
+		String id = InfoSave.getPublicid();
 		
 		try{
         	Connection con = connection.makeConnection();
@@ -54,10 +56,9 @@ public class MyOrderList extends JPanel {
     		pstmt = con.prepareStatement(sql);
     		
     		rs = pstmt.executeQuery();
-    		while (rs.next()) {				// 주문번호 | 전화 | 주소 | 책 | 수량 |수취인
-    			String str = rs.getNString(1) + "  /  \t" + rs.getNString(3) + "  /  " + rs.getNString(2);
-    			System.out.println(str);
-                li.add(str); // 리스트에 데이터를 추가한다.
+    		while (rs.next()) {																					// 주문번호 | 날자 | 수량 | 책 
+    			String str = String.format("  %s  |  %s  |  %s  |  %s", rs.getNString(1), rs.getNString(6), rs.getNString(2), rs.getNString(2));
+    			li.add(str);
     		}
 
         }catch(SQLException sqle){

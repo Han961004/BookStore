@@ -11,7 +11,7 @@ import javax.swing.JFrame;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
 
-public class FrameTest extends JFrame {
+public class __FrameTest__ extends JFrame {
 	TopUserPanel top1 = new TopUserPanel();
 	TopAdminPanel top2 = new TopAdminPanel();
 	Container c;
@@ -22,7 +22,7 @@ public class FrameTest extends JFrame {
 	
 	
 	
-	public FrameTest() {
+	public __FrameTest__() {
 		
 		c = getContentPane();
 		
@@ -64,7 +64,7 @@ public class FrameTest extends JFrame {
 	}
 	
 	public static void main(String[] args) {
-		new FrameTest();
+		new __FrameTest__();
 	}
 
 }

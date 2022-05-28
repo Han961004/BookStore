@@ -41,7 +41,7 @@ public class UserPanel extends JPanel {
 
 			JButton btn = (JButton) e.getSource();
 
-			FrameTest test = (FrameTest) btn.getTopLevelAncestor();
+			__FrameTest__ test = (__FrameTest__) btn.getTopLevelAncestor();
 
 		}
 	}

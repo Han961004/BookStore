@@ -70,7 +70,7 @@ public class OrdersList extends JPanel {
 
 		ActionListener listener1 = e -> {
 			
-			String uname = tf1.getText();
+			String id = tf1.getText();
 			
 			if(e.getSource() == btn1) {	
 				
@@ -79,14 +79,14 @@ public class OrdersList extends JPanel {
 	    		ResultSet rs = null; 
 	    		PreparedStatement pstmt = null;
 
-    			sql = "select * from orders where uname = '" + uname + "' ;";
+    			sql = "select * from orders where id = '" + id + "' ;";
 	    		
 	    		try {
 		    		pstmt = con.prepareStatement(sql);
 		    		rs = pstmt.executeQuery();
 		    		
 		    		if (rs.next()) {
-	    				if (rs.getString(4).contentEquals(uname)) {
+	    				if (rs.getString(3).contentEquals(id)) {
 	    					
 	    					li.removeAll();				// 버튼 누를 때 마다 리스트 초기화
 	    					

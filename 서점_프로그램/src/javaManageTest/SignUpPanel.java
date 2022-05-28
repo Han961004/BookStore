@@ -7,10 +7,10 @@ import javax.swing.*;
 
 import SQL.connection;
 
-public class SignUpPanel__ extends JPanel {
+public class SignUpPanel extends JPanel {
 	TopUserPanel top = new TopUserPanel();
 
-	SignUpPanel__() {
+	SignUpPanel() {
 
 		this.setBackground(Color.white);
 		this.setLayout(null);
@@ -74,7 +74,7 @@ public class SignUpPanel__ extends JPanel {
 		ActionListener listener1 = e -> {
 			
 			JButton btn = (JButton) e.getSource();
-			FrameTest test = (FrameTest) btn.getTopLevelAncestor();
+			__FrameTest__ test = (__FrameTest__) btn.getTopLevelAncestor();
 			
 			if(e.getSource() == btn1) {			// 회원가입 누르면
 				

@@ -54,7 +54,7 @@ public class UserLogin extends JPanel {
 
 			JButton btn = (JButton) e.getSource();
 
-			FrameTest test = (FrameTest) btn.getTopLevelAncestor();
+			__FrameTest__ test = (__FrameTest__) btn.getTopLevelAncestor();
 
 			switch (btn.getText()) {
 			case "사용자 로그인":
@@ -64,7 +64,7 @@ public class UserLogin extends JPanel {
 				test.viewScreen(new AdminPanel());
 				break;
 			case "회원가입":
-				test.viewScreen(new SignUpPanel__());
+				test.viewScreen(new SignUpPanel());
 				break;
 			}
 		}

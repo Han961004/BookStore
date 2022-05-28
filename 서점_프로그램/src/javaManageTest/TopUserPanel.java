@@ -42,17 +42,17 @@ public class TopUserPanel extends JPanel {
 
 			JButton btn = (JButton) e.getSource();
 
-			FrameTest test = (FrameTest) btn.getTopLevelAncestor();
+			__FrameTest__ test = (__FrameTest__) btn.getTopLevelAncestor();
 
 			switch (btn.getText()) {
 			case "도서목록":
 				test.viewScreen2(new Booklist());
 				break;
 			case "도서검색":
-				test.viewScreen2(new UserBookSearch__());
+				test.viewScreen2(new UserBookSearch());
 				break;
 			case "도서주문":
-				//test.viewScreen2(new UserOrderList__());
+//				test.viewScreen2(new ());
 				break;
 			case "나의주문":
 				test.viewScreen2(new MyOrderList());

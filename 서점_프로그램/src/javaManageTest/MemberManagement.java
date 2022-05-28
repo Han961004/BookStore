@@ -28,7 +28,7 @@ public class MemberManagement extends JPanel {
 		
 		//이름 검색해서 주문 번호와 책재목 가격 구매날짜가 나와야 함
 		
-		JLabel l1 = new JLabel("회원이름 : ");
+		JLabel l1 = new JLabel("회원아이디 : ");
 		JTextField tf1 = new JTextField(10);
 		JButton btn1 = new JButton("검색");
 		JButton btn2 = new JButton("수정");
@@ -55,14 +55,14 @@ public class MemberManagement extends JPanel {
 
 			if(e.getSource() == btn1) {			// 입력완료 누르면
 				
-				String uname = tf1.getText();
+				String id = tf1.getText();
 				
 				Connection con = connection.makeConnection();
 	    		String sql = null;
 	    		ResultSet rs = null; 
 	    		PreparedStatement pstmt = null;
 	    		
-	    		sql = "select * from members where uname = '" + uname + "';";
+	    		sql = "select * from members where id = '" + id + "';";
 	    		
 	    		try {
 	    			pstmt = con.prepareStatement(sql);

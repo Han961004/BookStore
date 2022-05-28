@@ -18,9 +18,9 @@ import javax.swing.JTextField;
 
 import SQL.connection;
 
-public class UserBookSearch__ extends JPanel {
+public class UserBookSearch extends JPanel {
 	
-	UserBookSearch__(){
+	UserBookSearch(){
 		JLabel l1 = new JLabel("도서 검색 : ");
 		JTextField tf1 = new JTextField(20);
 		JButton btn1 = new JButton("검색");

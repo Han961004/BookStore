@@ -40,7 +40,7 @@ public class AfterLoginPanel extends JPanel {
 
 			JButton btn = (JButton) e.getSource();
 
-			FrameTest test = (FrameTest) btn.getTopLevelAncestor();
+			__FrameTest__ test = (__FrameTest__) btn.getTopLevelAncestor();
 
 			
 			switch (btn.getText()) {
@@ -49,7 +49,7 @@ public class AfterLoginPanel extends JPanel {
 				
 				break;
 			case "회원가입":
-				test.viewScreen(new SignUpPanel__());
+				test.viewScreen(new SignUpPanel());
 				
 				break;
 			}
