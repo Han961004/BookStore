@@ -38,7 +38,7 @@ public class InfoPanel extends JPanel {
 
 			switch (btn.getText()) {
 			case "로그인":
-				test.viewScreen(new LoginPanel__());
+				test.viewScreen(new LoginPanel());
 				break;
 			case "회원가입":
 				test.viewScreen(new SignUpPanel__());

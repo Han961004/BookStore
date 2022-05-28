@@ -32,6 +32,7 @@ public class FrameTest extends JFrame {
 		this.viewScreen(new InfoPanel());
 		this.setSize(500, 400);
 		this.setVisible(true);
+		
 	}
 
 	

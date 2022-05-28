@@ -19,9 +19,9 @@ import javax.swing.JPanel;
 
 import SQL.connection;
 
-public class Booklist___ extends JPanel {
+public class Booklist extends JPanel {
 	
-	Booklist___() {
+	Booklist() {
 		
 		Panel p = new Panel();
         p.setLayout(null);
@@ -37,7 +37,7 @@ public class Booklist___ extends JPanel {
     		ResultSet rs = null; 
     		PreparedStatement pstmt = null;
     		
-    		sql = "select * from books";
+    		sql = "select * from books order by bname;";
     		pstmt = con.prepareStatement(sql);
     		
     		rs = pstmt.executeQuery();

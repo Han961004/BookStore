@@ -14,7 +14,7 @@ public class TopUserPanel extends JPanel {
 		btn0 = new JButton("도서목록");
 		btn1 = new JButton("도서검색");
 		btn2 = new JButton("도서주문");
-		btn3 = new JButton("주문목록");
+		btn3 = new JButton("나의주문");
 		btn4 = new JButton("로그아웃");
 
 		this.setVisible(true);
@@ -46,7 +46,7 @@ public class TopUserPanel extends JPanel {
 
 			switch (btn.getText()) {
 			case "도서목록":
-				test.viewScreen2(new Booklist___());
+				test.viewScreen2(new Booklist());
 				break;
 			case "도서검색":
 				test.viewScreen2(new UserBookSearch__());
@@ -54,8 +54,8 @@ public class TopUserPanel extends JPanel {
 			case "도서주문":
 				//test.viewScreen2(new UserOrderList__());
 				break;
-			case "주문목록":
-				test.viewScreen2(new UserOrderList__());
+			case "나의주문":
+				test.viewScreen2(new MyOrderList());
 				break;
 			case "로그아웃":										// 변경
 				test.viewScreen(new InfoPanel());

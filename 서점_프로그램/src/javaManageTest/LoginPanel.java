@@ -21,11 +21,12 @@ import javax.swing.JTextField;
 import SQL.connection;
 import javaManageTest.InfoPanel.MyActionListener;
 
-public class LoginPanel__ extends JPanel {
+public class LoginPanel extends JPanel {
 	
-	TopUserPanel top = new TopUserPanel();
-
-	LoginPanel__() {
+	LogInfoSave info = new LogInfoSave();
+	
+	
+	LoginPanel() {
 
 		this.setBackground(Color.white);
 		this.setLayout(null);
@@ -61,14 +62,14 @@ public class LoginPanel__ extends JPanel {
 		ActionListener listener1 = e -> {
 			
 			
-			
+			// 패스워드 어디감???????????????????????
 			
 			JButton btn = (JButton) e.getSource();
 			FrameTest test = (FrameTest) btn.getTopLevelAncestor();
 			String id = text1.getText();
 			String pw = text2.getText();
 			
-// 사용자 로그인 누르면
+			// 사용자 로그인 누르면
 			if(e.getSource() == btn1) {			
 				
 				Connection con = connection.makeConnection();
@@ -86,7 +87,11 @@ public class LoginPanel__ extends JPanel {
 	    			
 	    			if (rs.next()) {
 	    				if (rs.getString(1).contentEquals(id)) {
+	    					
+	    					info.setPublicid(id);
+	    					System.out.println(info.getPublicid());
 	    					JOptionPane.showMessageDialog(this, "회원 로그인 성공", "로그인성공", 1); // 로그인 성공
+	    					
 	    					test.viewScreen2(new UserPanel());
 	    				}
 	    				else {

@@ -8,6 +8,9 @@ import java.awt.List;
 import java.awt.Panel;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.awt.event.MouseAdapter;
+import java.awt.event.MouseEvent;
+import java.awt.event.MouseListener;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
@@ -16,19 +19,23 @@ import java.sql.SQLException;
 import javax.swing.JButton;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
+import javax.swing.JList;
 import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 import javax.swing.JTextArea;
 import javax.swing.JTextField;
+import javax.swing.ListModel;
 
 import com.mysql.cj.x.protobuf.MysqlxPrepare.Execute;
 
+import Demo.*;
 import SQL.connection;
 
 public class BookManagement extends JPanel {
 	
 	JTextField text, text1, text2, text3, text4, text5;
-
+	List li = new List();
+	
 	BookManagement() {
 
 		this.setBackground(Color.white);
@@ -44,7 +51,7 @@ public class BookManagement extends JPanel {
 		p.setLayout(null);
 		p.setSize(450, 400);
 
-		List li = new List();
+		
 		li.setBounds(0, 20, 450, 250);
 		li.removeAll(); // 리스트 내용을 전부 제거한다.
 		
@@ -56,22 +63,21 @@ public class BookManagement extends JPanel {
 		p.add(li);
 		add(p);
 		
-		
 		try{
         	Connection con = connection.makeConnection();
     		String sql = null;
     		ResultSet rs = null; 
     		PreparedStatement pstmt = null;
     		
-    		sql = "select * from books";
+    		sql = "select * from books order by bname";
     		pstmt = con.prepareStatement(sql);
     		
     		rs = pstmt.executeQuery();
     		while (rs.next()) {
-    			String str = rs.getNString(1) + "  /  " + rs.getNString(3) + "  /  " + rs.getNString(2);
-                li.add(str); // 리스트에 데이터를 추가한다.
+    			String str1 = String.format("  %s  |  %-3s권  |  %s", rs.getNString(1), rs.getNString(6), rs.getNString(2));
+    			
+                li.add(str1); // 리스트에 데이터를 추가한다.
     		}
-
         }catch(SQLException sqle){
 			JOptionPane.showMessageDialog(this, "책 불러오기 성공", "등록성공", 0);
         }
@@ -79,8 +85,6 @@ public class BookManagement extends JPanel {
 		
 		
 		ActionListener listener1 = e -> {
-			
-			
 			if(e.getSource() == btn1) {			// 검색 버튼	 누르면
 				
 				String bname = tf1.getText();
@@ -118,5 +122,9 @@ public class BookManagement extends JPanel {
 		btn1.addActionListener(listener1);
 		btn2.addActionListener(listener1);
 		btn3.addActionListener(listener1);
+		
+		
+		
 	}
 }
+
