@@ -10,6 +10,7 @@ import javax.swing.JButton;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
+import javax.swing.JScrollPane;
 
 public class __FrameTest__ extends JFrame {
 	TopUserPanel top1 = new TopUserPanel();
@@ -18,20 +19,30 @@ public class __FrameTest__ extends JFrame {
 	
 	
 	
-	
-	
-	
-	
 	public __FrameTest__() {
 		
 		c = getContentPane();
 		
-		this.setResizable(false);
+		
+		
+		
+		
+		
+		
+		
+		
+		
+	    
+	    
+	    this.setResizable(false);
 		this.setTitle("니가와 서점");
 		this.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		this.viewScreen(new InfoPanel());
 		this.setSize(500, 400);
 		this.setVisible(true);
+		
+		
+		
 		
 	}
 

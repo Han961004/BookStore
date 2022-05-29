@@ -112,11 +112,11 @@ public class BookFix extends JPanel{
 		    		pstmt = con.prepareStatement(sql);
 		    		rs = pstmt.executeQuery();
 		    		rs.next();
-		    		text1.setText(rs.getNString(1));
-		    		text2.setText(rs.getNString(2));
+		    		text1.setText(rs.getNString(2));
+		    		text2.setText(rs.getNString(3));
 					text3.setText(rs.getNString(4));
-					text4.setText(rs.getNString(5));
-					text5.setText(rs.getNString(6));
+					text4.setText(String.valueOf(rs.getInt(5)));
+					text5.setText(String.valueOf(rs.getInt(6)));
 					
 					JOptionPane.showMessageDialog(this, "조회 성공", "조회성공", 1);
 				} catch (SQLException e1) {

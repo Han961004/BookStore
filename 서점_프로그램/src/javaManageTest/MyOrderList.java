@@ -57,7 +57,7 @@ public class MyOrderList extends JPanel {
     		
     		rs = pstmt.executeQuery();
     		while (rs.next()) {																					// 주문번호 | 날자 | 수량 | 책 
-    			String str = String.format("  %s  |  %s  |  %s  |  %s", rs.getNString(1), rs.getNString(6), rs.getNString(2), rs.getNString(2));
+    			String str = "  " + rs.getInt(1) + "  |  " + rs.getNString(2) + "  |  " + rs.getInt(6) + " 권  |  " + rs.getNString(4) + "  |  " + rs.getString(5) + "  |  " + rs.getNString(7);
     			li.add(str);
     		}
 

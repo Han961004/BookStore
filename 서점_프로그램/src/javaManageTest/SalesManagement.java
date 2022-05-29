@@ -18,14 +18,14 @@ import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 import javax.swing.JTextField;
 
-import Demo.SaleChart;
 import SQL.connection;
+import chart.SaleChart;
 
-public class Sales extends JPanel {
+public class SalesManagement extends JPanel {
 	
 	InfoSave info = new InfoSave();
 	
-	Sales() {
+	SalesManagement() {
 
 		this.setBackground(Color.white);
 		JLabel l2 = new JLabel("날짜 검색 : ");
@@ -63,13 +63,13 @@ public class Sales extends JPanel {
 		
 		
 		ActionListener listener1 = e -> {
+			
 			String years = tf1.getText();
 			String months = tf2.getText();
+			
 			if(e.getSource() == btn1) {			// 검색 버튼	 누르면
 				
 				li.removeAll();
-				
-				
 				
 				Connection con = connection.makeConnection();
 	    		String sql = null;
@@ -77,11 +77,12 @@ public class Sales extends JPanel {
 	    		ResultSet rs = null; 
 	    		
 	    		try {
-	    			sql = "select * from sale where years = ? and months = ? order by days;";
+	    			sql = "SELECT * FROM sale WHERE year(dates) = ? and month(dates) = ? order by dates;";
 	    			
 	    			pstmt = con.prepareStatement(sql);
-	    			pstmt.setString(1, years);
-	    			pstmt.setString(2, months);
+	    			
+	    			pstmt.setInt(1, Integer.parseInt(years));
+	    			pstmt.setInt(2, Integer.parseInt(months));
 	    			
 	    			rs = pstmt.executeQuery();
 	    			
@@ -89,14 +90,27 @@ public class Sales extends JPanel {
 	    			int b = 0;
 	    			
 	    			while (rs.next()) {
-	    				String str = "  " + rs.getNString(1) + "  |  " + rs.getNString(2) + "-" + rs.getNString(3) + "-" + rs.getNString(4) + "  |  " + rs.getNString(5) + " 권  |  " + rs.getNString(6) + " 원  |  " + rs.getNString(7);
-	                    a+= Integer.parseInt(rs.getNString(5));
-	                    b+= Integer.parseInt(rs.getNString(6));
+	    				
+	    				
+	    				String ll = "";
+	        			String o = "";
+	        			if (rs.getInt(2) < 10) {			// 00권 맞추기
+	        				o = "0";
+	        			}
+	        			
+	        			if (Math.log10(rs.getInt(3))+1 < 5) {			// 혹시 4자리 가격이면
+	        				ll = "    ";
+	        			} else if(Math.log10(rs.getInt(3))+1 < 6) {		// 5자리 가격이면
+	        				ll = "  ";
+	        			}
+	        			
+	    				
+	    				String str = "  " + rs.getNString(1) + "  |  " + rs.getDate(5) + "  |  " + o + rs.getInt(2) + " 권"  + "  |  " + ll + rs.getInt(3) + " 원  |  " + rs.getNString(4);
+	                    a+= rs.getInt(2);
+	                    b+= rs.getInt(3);
 	    				li.add(str); // 리스트에 데이터를 추가한다.
 	        		}
 	        		
-	    			
-	    			
 	    			li.add("");
 	    			li.add("");
 	    			li.add(String.format("  총 판매 권 수 : %20d 권          |  총 판매 금액 : %20d 원", a, b));
@@ -111,7 +125,12 @@ public class Sales extends JPanel {
 				
 				info.setPublicyears(tf1.getText());				// 고정시킴
 				
-				SaleChart.main(null);
+				try {
+					new chart.SaleChart();
+				} catch (SQLException e1) {
+					// TODO Auto-generated catch block
+					e1.printStackTrace();
+				}
 			}
 		};
 		btn1.addActionListener(listener1);

@@ -38,9 +38,14 @@ public class MemberManagement extends JPanel {
 		p.setSize(450, 400);
 
 		JTextArea p2 = new JTextArea();
-		p2.setBounds(0, 20, 450, 250);
+
+		p2.setBounds(100, 20, 300, 100);
 		p2.removeAll(); // 리스트 내용을 전부 제거한다.
 		p2.setEnabled(false);
+		
+		List li = new List();
+		li.setBounds(0, 130, 450, 150);
+		li.add("회원 리스트");
 		
 		add(l1);
 		add(tf1);
@@ -48,7 +53,35 @@ public class MemberManagement extends JPanel {
 		add(btn2);
 		p.add(p2);
 		add(p);
+		p.add(li);
+		
+		
+		
+		try{
+        	Connection con = connection.makeConnection();
+    		String sql = null;
+    		ResultSet rs = null; 
+    		PreparedStatement pstmt = null;
+    		
+    		sql = "select * from members";
+    		pstmt = con.prepareStatement(sql);
+    		
+    		rs = pstmt.executeQuery();
+    		
+    		while (rs.next()) {
+    			
+    			String str = "  " + rs.getNString(1) + "  |  " + rs.getNString(2) + "  |  " + rs.getNString(3) + "  |  " + rs.getInt(4);
+                li.add(str); // 리스트에 데이터를 추가한다.
+    		}
 
+        }catch(SQLException sqle){
+			JOptionPane.showMessageDialog(this, "책 불러오기 실패", "불러오기 실패", 0);
+        }
+		
+		
+		
+		
+		
 		
 		
 		ActionListener listener1 = e -> {
@@ -74,9 +107,8 @@ public class MemberManagement extends JPanel {
 	    			p2.setText("아이디\t\t" + rs.getNString(1) + "\n" +
 	    						"패스워드\t\t" + rs.getNString(2) + "\n" +
 	    						"이   름\t\t" + rs.getNString(3) + "\n" +
-	    						"나   이\t\t" + rs.getNString(4) + "\n" +
-	    						"휴대폰\t\t" + rs.getNString(5) + "\n" +
-	    						"주   소\t\t"+ rs.getNString(6));
+	    						"나   이\t\t" + rs.getInt(4) + "\n"
+	    						);
 
 	    			JOptionPane.showMessageDialog(this, "고객 검색 성공", "검색성공", 1);
 	    			

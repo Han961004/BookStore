@@ -45,9 +45,9 @@ public class OrderFix extends JFrame{
 		text2.setBounds(220, 130, 120, 20);
 		
 		JLabel lbl3 = new JLabel("받는주소 :");
-		lbl3.setBounds(120, 170, 120, 20);
-		JTextArea text3 = new JTextArea();
-		text3.setBounds(190, 170, 180, 100);
+		lbl3.setBounds(90, 170, 120, 20);
+		JTextField text3 = new JTextField(20);
+		text3.setBounds(160, 170, 240, 20);
 	
 		JButton btn5 = new JButton("확인");
 		btn5.setBounds(350, 50, 90, 20);
@@ -96,8 +96,8 @@ public class OrderFix extends JFrame{
 		    		rs = pstmt.executeQuery();
 		    		rs.next();
 		    		text1.setText(rs.getNString(4));
-		    		text2.setText(rs.getNString(6));
-					text3.setText(rs.getNString(5));
+		    		text2.setText(rs.getNString(5));
+					text3.setText(rs.getNString(7));
 					
 					JOptionPane.showMessageDialog(this, "조회 성공", "조회성공", 1);
 				} catch (SQLException e1) {

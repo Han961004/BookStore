@@ -28,8 +28,8 @@ import javax.swing.ListModel;
 
 import com.mysql.cj.x.protobuf.MysqlxPrepare.Execute;
 
-import Demo.*;
 import SQL.connection;
+import chart.*;
 
 public class BookManagement extends JPanel {
 	
@@ -65,7 +65,8 @@ public class BookManagement extends JPanel {
 		
 		try{
         	Connection con = connection.makeConnection();
-    		String sql = null;
+    		
+        	String sql = null;
     		ResultSet rs = null; 
     		PreparedStatement pstmt = null;
     		
@@ -74,12 +75,22 @@ public class BookManagement extends JPanel {
     		
     		rs = pstmt.executeQuery();
     		while (rs.next()) {
-    			String str1 = String.format("  %s  |  %-3s권  |  %s", rs.getNString(1), rs.getNString(6), rs.getNString(2));
+    			String ll = "";
+    			String o = "";
+    			if (rs.getInt(6) < 10) {			// 00권 맞추기
+    				o = "0";
+    			}
+    			
+    			if (Math.log10(rs.getInt(5))+1 < 5) {			// 혹시 4자리 가격이면
+    				ll = "  ";
+    			}
+    			
+    			String str1 = "  " + rs.getNString(1) + "  |  " + o + rs.getInt(6) + " 권"  + "  |  " + rs.getNString(3) + "  |  " + ll + rs.getInt(5) + " 원" + "  |  " + rs.getNString(2);
     			
                 li.add(str1); // 리스트에 데이터를 추가한다.
     		}
         }catch(SQLException sqle){
-			JOptionPane.showMessageDialog(this, "책 불러오기 성공", "등록성공", 0);
+			JOptionPane.showMessageDialog(this, "책 불러오기 실패", "불러오기 실패", 0);
         }
 		
 		
@@ -103,7 +114,7 @@ public class BookManagement extends JPanel {
 	    			
 	    			if (rs.next()) {
 	    				if (rs.getString(2).contentEquals(bname)) {
-	    					JOptionPane.showMessageDialog(this, "찾는 책이 있습니다", "검색성공", 1); // 로그인 성공
+	    					JOptionPane.showMessageDialog(this, "찾는 책이 있습니다.  " + rs.getInt(6) + " 권 남았습니다.", "검색성공", 1)	;
 	    				}
 	    			}
 	    			else {

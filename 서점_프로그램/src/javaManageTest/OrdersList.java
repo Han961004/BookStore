@@ -25,7 +25,7 @@ public class OrdersList extends JPanel {
 	
 	OrdersList() {
 		this.setBackground(Color.white);
-		JLabel l2 = new JLabel("회원이름 : ");
+		JLabel l2 = new JLabel("회원아이디 : ");
 		JTextField tf1 = new JTextField(10);
 		JButton btn1 = new JButton("검색");
 		JButton btn2 = new JButton("목록");
@@ -46,17 +46,19 @@ public class OrdersList extends JPanel {
     		ResultSet rs = null; 
     		PreparedStatement pstmt = null;
     		
-    		sql = "select * from orders";
+    		sql = "select * from orders order by onum desc";
     		pstmt = con.prepareStatement(sql);
     		
     		rs = pstmt.executeQuery();
+    		
     		while (rs.next()) {
-    			String str = rs.getNString(1) + "  /  " + rs.getNString(3) + "  /  " + rs.getNString(2);
+    			
+    			String str = rs.getInt(1) + "  |  " + rs.getNString(2) + "  |  " + rs.getNString(3) + "  |  " + rs.getNString(4) + "  |  " + rs.getNString(5) + "  |  " + rs.getInt(6) + "  |  " + rs.getNString(7);
                 li.add(str); // 리스트에 데이터를 추가한다.
     		}
 
         }catch(SQLException sqle){
-			JOptionPane.showMessageDialog(this, "책 불러오기 성공", "등록성공", 0);
+			JOptionPane.showMessageDialog(this, "책 불러오기 실패", "불러오기 실패", 0);
         }
 		
 		
@@ -118,12 +120,12 @@ public class OrdersList extends JPanel {
 		    		ResultSet rs = null; 
 		    		PreparedStatement pstmt = null;
 		    		
-		    		sql = "select * from orders";
+		    		sql = "select * from orders order by onum desc";
 		    		pstmt = con.prepareStatement(sql);
 		    		
 		    		rs = pstmt.executeQuery();
 		    		while (rs.next()) {
-		    			String str = rs.getNString(1) + "  /  " + rs.getNString(3) + "  /  " + rs.getNString(2);
+		    			String str = rs.getInt(1) + "  |  " + rs.getNString(2) + "  |  " + rs.getNString(3) + "  |  " + rs.getNString(4) + "  |  " + rs.getNString(5) + "  |  " + rs.getInt(6) + "  |  " + rs.getNString(7);
 		                li.add(str); // 리스트에 데이터를 추가한다.
 		    		}
 					JOptionPane.showMessageDialog(this, "책 불러오기 성공", "등록성공", 1);

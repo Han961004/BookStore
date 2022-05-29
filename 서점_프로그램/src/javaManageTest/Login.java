@@ -12,9 +12,9 @@ import javax.swing.JTextField;
 
 import javaManageTest.InfoPanel.MyActionListener;
 
-public class UserLogin extends JPanel {
+public class Login extends JPanel {
 
-	UserLogin() {
+	Login() {
 
 		this.setBackground(Color.white);
 		this.setLayout(null);
@@ -64,7 +64,7 @@ public class UserLogin extends JPanel {
 				test.viewScreen(new AdminPanel());
 				break;
 			case "회원가입":
-				test.viewScreen(new SignUpPanel());
+				test.viewScreen(new SignUpPanel__O());
 				break;
 			}
 		}

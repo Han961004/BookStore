@@ -49,15 +49,15 @@ public class MemberFix extends JPanel {
 		text3 = new JTextField(20);
 		text3.setBounds(220, 170, 120, 20);
 		
-		JLabel lbl4 = new JLabel("휴대전화 :");
-		lbl4.setBounds(150, 210, 120, 20);
-		text4 = new JTextField(20);
-		text4.setBounds(220, 210, 120, 20);
-		
-		JLabel lbl5 = new JLabel("주        소 :");
-		lbl5.setBounds(150, 250, 120, 20);
-		text5 = new JTextField(20);
-		text5.setBounds(220, 250, 120, 20);
+//		JLabel lbl4 = new JLabel("휴대전화 :");							혹시 판매매출로 등급을 매기면
+//		lbl4.setBounds(150, 210, 120, 20);
+//		text4 = new JTextField(20);
+//		text4.setBounds(220, 210, 120, 20);
+//		
+//		JLabel lbl5 = new JLabel("주        소 :");
+//		lbl5.setBounds(150, 250, 120, 20);
+//		text5 = new JTextField(20);
+//		text5.setBounds(220, 250, 120, 20);
 	
 		JButton btn5 = new JButton("확인");
 		btn5.setBounds(350, 50, 90, 20);
@@ -77,10 +77,10 @@ public class MemberFix extends JPanel {
 		window.add(text2);
 		window.add(lbl3);
 		window.add(text3);
-		window.add(lbl4);
-		window.add(text4);
-		window.add(lbl5);
-		window.add(text5);
+//		window.add(lbl4);
+//		window.add(text4);
+//		window.add(lbl5);
+//		window.add(text5);
 		window.add(btn5);
 		window.add(btn6);
 		window.add(btn7);
@@ -94,8 +94,8 @@ public class MemberFix extends JPanel {
 			String uname = text1.getText();
 			String pw = text2.getText();
 			String age = text3.getText();
-			String tel = text4.getText();
-			String address = text5.getText();
+//			String tel = text4.getText();
+//			String address = text5.getText();
 			
 			if(e.getSource() == btn5) {			// 확인 누르면
 				
@@ -113,9 +113,7 @@ public class MemberFix extends JPanel {
 		    		rs.next();
 		    		text1.setText(rs.getNString(3));
 		    		text2.setText(rs.getNString(2));
-					text3.setText(rs.getNString(4));
-					text4.setText(rs.getNString(5));
-					text5.setText(rs.getNString(6));
+					text3.setText(String.valueOf(rs.getInt(4)));
 					
 					JOptionPane.showMessageDialog(this, "조회 성공", "조회성공", 1);
 				} catch (SQLException e1) {
@@ -128,16 +126,16 @@ public class MemberFix extends JPanel {
 	    		String sql = null;
 	    		PreparedStatement pstmt = null;
 	    		
-	    		sql = "update members set uname = ?, pw = ?, age = ?, tel = ?, address = ? where (id = ?);";
+	    		sql = "update members set uname = ?, pw = ?, age = ? where (id = ?);";
 	    		try {
 	    			
 	    			pstmt = con.prepareStatement(sql);
 	    			pstmt.setString(1, uname);
 	    			pstmt.setString(2, pw);
 	    			pstmt.setString(3, age);
-	    			pstmt.setString(4, tel);
-	    			pstmt.setString(5, address);
-	    			pstmt.setString(6, id);
+//	    			pstmt.setString(4, tel);
+//	    			pstmt.setString(5, address);
+	    			pstmt.setString(4, id);
 	    			pstmt.execute();
 	    			
 	    			JOptionPane.showMessageDialog(this, "갱신 성공", "갱신성공", 1);

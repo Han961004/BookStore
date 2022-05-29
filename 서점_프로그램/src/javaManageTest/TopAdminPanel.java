@@ -14,7 +14,7 @@ public class TopAdminPanel extends JPanel {
 		btn0 = new JButton("도서관리");
 		btn1 = new JButton("매출관리");
 		btn2 = new JButton("주문목록");
-		btn3 = new JButton("고객관리");
+		btn3 = new JButton("회원정보");
 		btn4 = new JButton("로그아웃");
 
 		this.setVisible(true);
@@ -52,12 +52,12 @@ public class TopAdminPanel extends JPanel {
 				test.viewScreen3(new BookManagement());
 				break;
 			case "매출관리":
-				test.viewScreen3(new Sales());
+				test.viewScreen3(new SalesManagement());
 				break;
 			case "주문목록":
 				test.viewScreen3(new OrdersList());
 				break;
-			case "고객관리":
+			case "회원정보":
 				test.viewScreen3(new MemberManagement());
 				break;
 			case "로그아웃":
