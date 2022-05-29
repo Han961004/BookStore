@@ -56,8 +56,30 @@ public class MyOrderList extends JPanel {
     		pstmt = con.prepareStatement(sql);
     		
     		rs = pstmt.executeQuery();
-    		while (rs.next()) {																					// 주문번호 | 날자 | 수량 | 책 
-    			String str = "  " + rs.getInt(1) + "  |  " + rs.getNString(2) + "  |  " + rs.getInt(6) + " 권  |  " + rs.getNString(4) + "  |  " + rs.getString(5) + "  |  " + rs.getNString(7);
+    		while (rs.next()) {					// 주문번호 | 날자 | 수량 | 책 
+    			
+    			
+    			String f1 = "";
+    			String ff1 ="";
+    			String ll = "";
+    			String o = "";
+    			
+    			if (Math.log10(rs.getInt(1))+1 < 1) {			// 혹시 4자리 가격이면
+    				ll = "    ";
+    			}else if (Math.log10(rs.getInt(1))+1 < 2) {
+    				ll = "  ";
+    			}
+    			
+    			f1 = rs.getString(2);
+    			if(f1.startsWith("f")) {
+    				ff1 = " ";
+    			}
+    			
+    			if (rs.getInt(6) < 10) {			// 00권 맞추기
+    				o = "0";
+    			}
+    																																		// 4 수취인 5 전번 7 주소
+    			String str = "  " + ll + rs.getInt(1) + "  |  " + ff1 + rs.getNString(2) + "  |  " + o + rs.getInt(6) + " 권  |  " + rs.getNString(4) + "  |  " + rs.getString(5) + "  |  " + rs.getNString(7);
     			li.add(str);
     		}
 

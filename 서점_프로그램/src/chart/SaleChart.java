@@ -39,6 +39,31 @@ public class SaleChart extends JFrame{
 		
 		
 		
+		
+		/////////////////					권수 종류별 할수 있겠다
+		
+		XYChart chart3 = new XYChartBuilder().xAxisTitle("월별").width(600).height(400).build();
+		chart3.addSeries("교보재", getRandomWalka(12));
+		chart3.addSeries("자격증", getRandomWalkb(12));
+		chart3.addSeries("참고서", getRandomWalkc(12));
+		chart3.addSeries("외국어", getRandomWalkf(12));
+		chart3.addSeries("소셜대중책", getRandomWalks(12));
+		
+		
+		JPanel panel3 = new XChartPanel(chart3);
+		JFrame f3 = new JFrame();
+		f3.add(panel3);
+		f3.pack();
+		f3.setVisible(true);
+		f3.setResizable(false);
+		
+		
+		
+		/////////////////
+		
+		
+		
+		
 		JPanel panel1 = new XChartPanel(chart1);
 		JPanel panel2 = new XChartPanel(chart2);
 		JFrame f1 = new JFrame();
@@ -70,7 +95,7 @@ public class SaleChart extends JFrame{
 		for(int i = 1 ; i <13 ; i ++) {
 			
 			try {
-				sql = "select sum(counts) from sale group by dates having month(dates) = "+ i + " and year(dates) = " + years + " ;";			
+				sql = "select sum(count) from orders where month(dates) = "+ i + " and year(dates) = " + years + " ;";			
 				pstmt = con.prepareStatement(sql);
 				rs = pstmt.executeQuery();
 				
@@ -100,7 +125,154 @@ public class SaleChart extends JFrame{
 		for(int i = 1 ; i <13 ; i ++) {
 			
 			try {
-				sql = "select sum(total) from sale group by dates having month(dates) = "+ i + " and year(dates) = " + years + " ;";			
+				sql = "select sum(total) from orders where month(dates) = "+ i + " and year(dates) = " + years + " ;";			
+				pstmt = con.prepareStatement(sql);
+				rs = pstmt.executeQuery();
+				
+				rs.next();
+				
+				y[i-1] = rs.getInt(1);
+			
+			} catch(Exception e) {
+				y[i-1] = 0;
+			}
+		}
+		return y;
+	}
+	
+	
+	/////////////////////////////// 책 별로 차트 ////////////////////////////
+	
+	
+	private static int[] getRandomWalka(int numPoints) throws SQLException {
+		
+		String years = InfoSave.getPublicyears();
+		
+		int []y = new int [12];
+		
+		Connection con = connection.makeConnection();
+		String sql = null;
+		PreparedStatement pstmt = null;
+		ResultSet rs = null; 
+		
+		for(int i = 1 ; i <13 ; i ++) {
+			
+			try {
+				sql = "select sum(count) from orders where month(dates) = "+ i + " and bnum like 'a%' and year(dates) = " + years + " ;";
+				pstmt = con.prepareStatement(sql);
+				rs = pstmt.executeQuery();
+				
+				rs.next();
+				
+				y[i-1] = rs.getInt(1);
+			
+			} catch(Exception e) {
+				y[i-1] = 0;
+			}
+		}
+		return y;
+	}
+	
+
+	private static int[] getRandomWalkb(int numPoints) throws SQLException {
+		
+		String years = InfoSave.getPublicyears();
+		
+		int []y = new int [12];
+		
+		Connection con = connection.makeConnection();
+		String sql = null;
+		PreparedStatement pstmt = null;
+		ResultSet rs = null; 
+		
+		for(int i = 1 ; i <13 ; i ++) {
+			
+			try {
+				sql = "select sum(count) from orders where month(dates) = "+ i + "and bnum like 'b%' and year(dates) = " + years + " ;";
+				pstmt = con.prepareStatement(sql);
+				rs = pstmt.executeQuery();
+				
+				rs.next();
+				
+				y[i-1] = rs.getInt(1);
+			
+			} catch(Exception e) {
+				y[i-1] = 0;
+			}
+		}
+		return y;
+	}
+	private static int[] getRandomWalkc(int numPoints) throws SQLException {
+	
+		String years = InfoSave.getPublicyears();
+		
+		int []y = new int [12];
+		
+		Connection con = connection.makeConnection();
+		String sql = null;
+		PreparedStatement pstmt = null;
+		ResultSet rs = null; 
+		
+		for(int i = 1 ; i <13 ; i ++) {
+			
+			try {
+				sql = "select sum(count) from orders where month(dates) = "+ i + " and bnum like 'c%' and year(dates) = " + years + " ;";		
+				pstmt = con.prepareStatement(sql);
+				rs = pstmt.executeQuery();
+				
+				rs.next();
+				
+				y[i-1] = rs.getInt(1);
+			
+			} catch(Exception e) {
+				y[i-1] = 0;
+			}
+		}
+		return y;
+	}
+	private static int[] getRandomWalkf(int numPoints) throws SQLException {
+	
+		String years = InfoSave.getPublicyears();
+		
+		int []y = new int [12];
+		
+		Connection con = connection.makeConnection();
+		String sql = null;
+		PreparedStatement pstmt = null;
+		ResultSet rs = null; 
+		
+		for(int i = 1 ; i <13 ; i ++) {
+			
+			try {
+				sql = "select sum(count) from orders where month(dates) = "+ i + "and bnum like 'f%' and year(dates) = " + years + " ;";		
+				pstmt = con.prepareStatement(sql);
+				rs = pstmt.executeQuery();
+				
+				rs.next();
+				
+				y[i-1] = rs.getInt(1);
+			
+			} catch(Exception e) {
+				y[i-1] = 0;
+			}
+		}
+		return y;
+	}
+	private static int[] getRandomWalks(int numPoints) throws SQLException {
+	
+		String years = InfoSave.getPublicyears();
+		
+		int []y = new int [12];
+		
+		Connection con = connection.makeConnection();
+		String sql = null;
+		PreparedStatement pstmt = null;
+		ResultSet rs = null; 
+		
+		for(int i = 1 ; i <13 ; i ++) {
+			
+			try {
+				sql = "select sum(count) from orders where month(dates) = "+ i + " and bnum like 's%' and year(dates) = " + years + " ;";			
 				pstmt = con.prepareStatement(sql);
 				rs = pstmt.executeQuery();
 				

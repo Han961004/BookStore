@@ -46,14 +46,34 @@ public class OrdersList extends JPanel {
     		ResultSet rs = null; 
     		PreparedStatement pstmt = null;
     		
+    		
+    		
+    		
     		sql = "select * from orders order by onum desc";
     		pstmt = con.prepareStatement(sql);
     		
     		rs = pstmt.executeQuery();
     		
+    		
     		while (rs.next()) {
     			
-    			String str = rs.getInt(1) + "  |  " + rs.getNString(2) + "  |  " + rs.getNString(3) + "  |  " + rs.getNString(4) + "  |  " + rs.getNString(5) + "  |  " + rs.getInt(6) + "  |  " + rs.getNString(7);
+    			String f1 = "";
+    			String ff1 ="";
+    			String ll = "";
+    			String o = "";
+    			
+    			if (Math.log10(rs.getInt(1))+1 < 1) {			// 혹시 4자리 가격이면
+    				ll = "    ";
+    			}else if (Math.log10(rs.getInt(1))+1 < 2) {
+    				ll = "  ";
+    			}
+    			
+    			f1 = rs.getString(2);
+    			if(f1.startsWith("f")) {
+    				ff1 = " ";
+    			}
+    			
+    			String str = "  " + ll + rs.getInt(1) + "  |  " + ff1 + rs.getString(2) + "  |  " + rs.getNString(3) + "  |  " + rs.getNString(4) + "  |  " + rs.getNString(5) + "  |  " + rs.getInt(6) + "  |  " + rs.getNString(7);
                 li.add(str); // 리스트에 데이터를 추가한다.
     		}
 
@@ -81,32 +101,75 @@ public class OrdersList extends JPanel {
 	    		ResultSet rs = null; 
 	    		PreparedStatement pstmt = null;
 
-    			sql = "select * from orders where id = '" + id + "' ;";
+    			sql = "select * from orders where id = '" + id + "' order by onum desc ;";
 	    		
 	    		try {
 		    		pstmt = con.prepareStatement(sql);
 		    		rs = pstmt.executeQuery();
 		    		
 		    		if (rs.next()) {
+		    			
+    	    			
 	    				if (rs.getString(3).contentEquals(id)) {
 	    					
-	    					li.removeAll();				// 버튼 누를 때 마다 리스트 초기화
+	    					
+	    					
+	    					
+	    					String f1 = "";
+        	    			String ff1 ="";
+        	    			String ll = "";
+        	    			String o = "";
+        	    			f1 = rs.getString(2);
+        	    			if(f1.startsWith("f")) {
+        	    				ff1 = " ";
+        	    			}
+        	    			if (Math.log10(rs.getInt(1))+1 < 1) {			// 혹시 4자리 가격이면
+        	    				ll = "    ";
+        	    			}else if (Math.log10(rs.getInt(1))+1 < 2) {
+        	    				ll = "  ";
+        	    			}
+	    	    			li.removeAll();				// 버튼 누를 때 마다 리스트 초기화
+	    	    			
+	    	    			
+	    	    			
 	    					
 	    					// 밑에랑 합치면 첫번 째 튜플 안나옴			if (rs.next()) 에서 이미 한번 써버려서 
-	    					String str = "번호 : " + rs.getNString(1) + "  /  " + "책 번호 : " + rs.getNString(2) + "  /  " + "수취인 : " + rs.getNString(4) + "(" + rs.getNString(5) + ")" + "  /  " + "수량 : " + rs.getNString(6);	
-	    					li.add(str);
+	    	    			String str = "  " + ll + rs.getInt(1) + "  |  " + ff1 + rs.getString(2) + "  |  " + rs.getNString(3) + "  |  " + rs.getNString(4) + "  |  " + rs.getNString(5) + "  |  " + rs.getInt(6) + "  |  " + rs.getNString(7);
+	    	                li.add(str);
 	    					
 	    					while(rs.next()) {
-		    					String str1 = "번호 : " + rs.getNString(1) + "  /  " + "책 번호 : " + rs.getNString(2) + "  /  " + "수취인 : " + rs.getNString(4) + "("  + rs.getNString(5) + ")" + "  /  " + "수량 : " + rs.getNString(6);
-								li.add(str1); // 리스트에 데이터를 추가한다.
+	    						
+	    						
+	    						
+	    						
+	        	    			
+	    						String f11 = "";
+	        	    			String ff11 ="";
+	        	    			String ll1 = "";
+	        	    			String o1 = "";
+	        	    			f11 = rs.getString(2);
+	        	    			if(f11.startsWith("f")) {
+	        	    				ff11 = " ";
+	        	    			}
+	        	    			if (Math.log10(rs.getInt(1))+1 < 1) {			// 혹시 4자리 가격이면
+	        	    				ll1 = "    ";
+	        	    			}else if (Math.log10(rs.getInt(1))+1 < 2) {
+	        	    				ll1 = "  ";
+	        	    			}
+	        	    			
+	        	    			
+	        	    			
+	        	    			
+	        	    			
+	        	    			
+	    						String str1 = "  " + ll1 + rs.getInt(1) + "  |  " + ff11 + rs.getString(2) + "  |  " + rs.getNString(3) + "  |  " + rs.getNString(4) + "  |  " + rs.getNString(5) + "  |  " + rs.getInt(6) + "  |  " + rs.getNString(7);
+	    		                li.add(str1); // 리스트에 데이터를 추가한다.
 	    					}
-	    					JOptionPane.showMessageDialog(this, "주문 불러오기 성공", "불러오기성공", 1);
+	    					JOptionPane.showMessageDialog(this, "불러오기 성공", "불러오기성공", 1);
 	    				}
-		    		}else {
-    					JOptionPane.showMessageDialog(this, "아이디를 재확인 해주세요", "불러오기실패", 0); // 비밀번호 불일치
-    				}
+		    		}
 				} catch (SQLException e1) {
-					JOptionPane.showMessageDialog(this, "주문 불러오기 실패", "불러오기실패", 0);
+					JOptionPane.showMessageDialog(this, "불러오기 실패", "불러오기실패", 0);
 					// TODO Auto-generated catch block
 					e1.printStackTrace();
 				}
@@ -125,7 +188,24 @@ public class OrdersList extends JPanel {
 		    		
 		    		rs = pstmt.executeQuery();
 		    		while (rs.next()) {
-		    			String str = rs.getInt(1) + "  |  " + rs.getNString(2) + "  |  " + rs.getNString(3) + "  |  " + rs.getNString(4) + "  |  " + rs.getNString(5) + "  |  " + rs.getInt(6) + "  |  " + rs.getNString(7);
+		    			
+		    			
+		    			String f11 = "";
+    	    			String ff11 ="";
+    	    			String ll1 = "";
+    	    			String o1 = "";
+    	    			f11 = rs.getString(2);
+    	    			if(f11.startsWith("f")) {
+    	    				ff11 = " ";
+    	    			}
+    	    			if (Math.log10(rs.getInt(1))+1 < 1) {			// 혹시 4자리 가격이면
+    	    				ll1 = "    ";
+    	    			}else if (Math.log10(rs.getInt(1))+1 < 2) {
+    	    				ll1 = "  ";
+    	    			}
+    	    			
+    	    			
+    	    			String str = "  " + ll1 + rs.getInt(1) + "  |  " + ff11 + rs.getString(2) + "  |  " + rs.getNString(3) + "  |  " + rs.getNString(4) + "  |  " + rs.getNString(5) + "  |  " + rs.getInt(6) + "  |  " + rs.getNString(7);
 		                li.add(str); // 리스트에 데이터를 추가한다.
 		    		}
 					JOptionPane.showMessageDialog(this, "책 불러오기 성공", "등록성공", 1);

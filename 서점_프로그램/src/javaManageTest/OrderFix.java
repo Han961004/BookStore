@@ -20,7 +20,7 @@ public class OrderFix extends JFrame{
 
 	// 새창에 수정하기 JFrame
 	JTextField text, text1, text2;
-	
+	InfoSave a = new InfoSave();
 	OrderFix(){
 		
 		JFrame window = new JFrame("주문정보 수정");
@@ -75,7 +75,8 @@ public class OrderFix extends JFrame{
 	    
 	    
 	    ActionListener listener1 = e -> {
-			
+	    	
+	    	String id = a.getPublicid();
 	    	String onum = text.getText();
 			String person = text1.getText();
 			String tel = text2.getText();
@@ -91,7 +92,7 @@ public class OrderFix extends JFrame{
 	    		
 	    		
 	    		try {
-	    			sql = "select * from orders where onum = '" + onum + "';";
+	    			sql = "select * from orders where id = '" + id + "' and onum = '" + onum + "';";
 		    		pstmt = con.prepareStatement(sql);
 		    		rs = pstmt.executeQuery();
 		    		rs.next();

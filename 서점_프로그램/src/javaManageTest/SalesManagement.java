@@ -77,7 +77,7 @@ public class SalesManagement extends JPanel {
 	    		ResultSet rs = null; 
 	    		
 	    		try {
-	    			sql = "SELECT * FROM sale WHERE year(dates) = ? and month(dates) = ? order by dates;";
+	    			sql = "SELECT * FROM orders WHERE year(dates) = ? and month(dates) = ? order by dates;";
 	    			
 	    			pstmt = con.prepareStatement(sql);
 	    			
@@ -91,23 +91,30 @@ public class SalesManagement extends JPanel {
 	    			
 	    			while (rs.next()) {
 	    				
-	    				
+	    				String f = "";			// f열 줄맞추기
 	    				String ll = "";
 	        			String o = "";
-	        			if (rs.getInt(2) < 10) {			// 00권 맞추기
+	        			if (rs.getInt(6) < 10) {			// 00권 맞추기
 	        				o = "0";
 	        			}
 	        			
-	        			if (Math.log10(rs.getInt(3))+1 < 5) {			// 혹시 4자리 가격이면
+	        			if (Math.log10(rs.getInt(8))+1 < 5) {			// 혹시 4자리 가격이면
 	        				ll = "    ";
-	        			} else if(Math.log10(rs.getInt(3))+1 < 6) {		// 5자리 가격이면
+	        			} else if(Math.log10(rs.getInt(8))+1 < 6) {		// 5자리 가격이면
 	        				ll = "  ";
 	        			}
 	        			
-	    				
-	    				String str = "  " + rs.getNString(1) + "  |  " + rs.getDate(5) + "  |  " + o + rs.getInt(2) + " 권"  + "  |  " + ll + rs.getInt(3) + " 원  |  " + rs.getNString(4);
-	                    a+= rs.getInt(2);
-	                    b+= rs.getInt(3);
+	        			if(Math.log10(rs.getInt(1))+1 <2) {
+	        				f = "      ";
+	        			}else if (Math.log10(rs.getInt(1))+1 <3){
+	        				f = "    ";
+	        			}
+	        			
+	        			
+	        			
+	    				String str = "  " + f + rs.getInt(1) + " 번  |  " + rs.getDate(10) + "  |  " + o + rs.getInt(6) + " 권"  + "  |  " + ll + rs.getInt(8) + " 원  |  " + rs.getNString(9);
+	                    a+= rs.getInt(6);
+	                    b+= rs.getInt(8);
 	    				li.add(str); // 리스트에 데이터를 추가한다.
 	        		}
 	        		

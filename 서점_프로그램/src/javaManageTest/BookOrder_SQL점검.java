@@ -15,12 +15,12 @@ import javax.swing.JTextField;
 
 import SQL.connection;
 
-public class 미구현BookOrder extends JFrame{
+public class BookOrder_SQL점검 extends JFrame{
 	JTextField text, text1, text2, text3, text4, text5, text6, text7, text8;
 
 	InfoSave rr = new InfoSave();
 	
-	미구현BookOrder(){
+	BookOrder_SQL점검(){
 		JFrame window1 = new JFrame("도서 주문");
 	    window1.setBounds(800, 100, 700, 600);
 	    window1.setResizable(false);
@@ -175,8 +175,6 @@ public class 미구현BookOrder extends JFrame{
 				}
 			} else if(e.getSource() == btn6) {				//주문하기
 				
-//				int stock = Integer.parseInt(text5.getText());
-//				int count = Integer.parseInt(text9.getText());
 				
 				Connection con = connection.makeConnection();
 	    		String sql = null;
@@ -203,10 +201,12 @@ public class 미구현BookOrder extends JFrame{
 	    			
 	    			////////////////////////
 	    			
-	    			sql1 = "update `books` set stock = ? where stock = ?";
+	    			sql1 = "update `books` set stock = ? where stock = ? and bnum = ?";
 	    			pstmt1 = con.prepareStatement(sql1);
 	    			pstmt1.setInt(1, ppap);
 	    			pstmt1.setInt(2, Integer.parseInt(text5.getText()));
+	    			pstmt1.setString(3, bnum);
+	    			
 	    			
 	    			if (ppap < 0) {
 	    				JOptionPane.showMessageDialog(this, "재고가 모자릅니다", "구매실패", 0);

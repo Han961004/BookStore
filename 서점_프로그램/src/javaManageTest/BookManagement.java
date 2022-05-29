@@ -26,6 +26,7 @@ import javax.swing.JTextArea;
 import javax.swing.JTextField;
 import javax.swing.ListModel;
 
+import com.mysql.cj.util.StringUtils;
 import com.mysql.cj.x.protobuf.MysqlxPrepare.Execute;
 
 import SQL.connection;
@@ -75,8 +76,12 @@ public class BookManagement extends JPanel {
     		
     		rs = pstmt.executeQuery();
     		while (rs.next()) {
+    			
+    			String f = "";
+    			String ff ="";
     			String ll = "";
     			String o = "";
+    			
     			if (rs.getInt(6) < 10) {			// 00권 맞추기
     				o = "0";
     			}
@@ -85,7 +90,15 @@ public class BookManagement extends JPanel {
     				ll = "  ";
     			}
     			
-    			String str1 = "  " + rs.getNString(1) + "  |  " + o + rs.getInt(6) + " 권"  + "  |  " + rs.getNString(3) + "  |  " + ll + rs.getInt(5) + " 원" + "  |  " + rs.getNString(2);
+    			
+    			f = rs.getString(1);
+    			
+    			if(f.startsWith("f")) {
+    				ff = " ";
+    			}
+    			
+    			
+    			String str1 = "  " + ff +rs.getNString(1) + "  |  " + o + rs.getInt(6) + " 권"  + "  |  " + rs.getNString(3) + "  |  " + ll + rs.getInt(5) + " 원" + "  |  " + rs.getNString(2);
     			
                 li.add(str1); // 리스트에 데이터를 추가한다.
     		}

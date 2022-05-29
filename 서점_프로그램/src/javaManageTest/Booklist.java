@@ -62,17 +62,28 @@ public class Booklist extends JPanel {
     		
     		rs = pstmt.executeQuery();
     		while (rs.next()) {
-    			String ll = "";
+    			String f = "";			// f열 줄맞추기
+				String ll = "";
     			String o = "";
+    			String ff = "";
+    			
     			if (rs.getInt(6) < 10) {			// 00권 맞추기
     				o = "0";
     			}
     			
     			if (Math.log10(rs.getInt(5))+1 < 5) {			// 혹시 4자리 가격이면
+    				ll = "    ";
+    			} else if(Math.log10(rs.getInt(5))+1 < 6) {		// 5자리 가격이면
     				ll = "  ";
     			}
     			
-    			String str1 = "  " + rs.getNString(1) + "  |  " + o + rs.getInt(6) + " 권"  + "  |  " + rs.getNString(3) + "  |  " + ll + rs.getInt(5) + " 원" + "  |  " + rs.getNString(2);
+    			f = rs.getString(1);
+    			
+    			if(f.startsWith("f")) {
+    				ff = " ";
+    			}
+    			
+    			String str1 = "  " + ff + rs.getNString(1) + "  |  " + o + rs.getInt(6) + " 권"  + "  |  " + rs.getNString(3) + "  |  " + ll + rs.getInt(5) + " 원" + "  |  " + rs.getNString(2);
     			
                 li.add(str1); // 리스트에 데이터를 추가한다.
     		}
@@ -111,7 +122,7 @@ public class Booklist extends JPanel {
 		    		e1.printStackTrace();
 				}
 			}else if(e.getSource() == btn2) {	
-				new 미구현BookOrder();
+				new BookOrder_SQL점검();
 			}
 		};
 		btn1.addActionListener(listener1);
