@@ -122,31 +122,31 @@ create table orders(
     primary key(onum)
     );
     
-INSERT INTO `orders` (`bnum`, `id`, `person`, `tel`, `count`, `address`, `total`, `bname`,`dates`) VALUES ('a014', 'mem1', '김하하', '01012341234', '1', '서울시 서대문구 홍은동 123-123 (단독주택)', '30000', 'C++', '2022-01-26');
-INSERT INTO `orders` (`bnum`, `id`, `person`, `tel`, `count`, `address`, `total`, `bname`,`dates`) VALUES ('a014', 'mem1', '김나나', '01023452345', '1', '서울시 강남구 테헤란로 304-23', '30000', 'C++', '2022-02-26');
-INSERT INTO `orders` (`bnum`, `id`, `person`, `tel`, `count`, `address`, `total`, `bname`,`dates`) VALUES ('a014', 'mem1', '박다다', '01034563456', '1', '부산시 해운대구 203-30', '30000', 'C++', '2022-03-21');
-INSERT INTO `orders` (`bnum`, `id`, `person`, `tel`, `count`, `address`, `total`, `bname`,`dates`) VALUES ('a015','mem2','하하하',	'01012352432','1','','20000','C#','2022-04-21');
-INSERT INTO `orders` (`bnum`, `id`, `person`, `tel`, `count`, `address`, `total`, `bname`,`dates`) VALUES ('s001','mem2','나나나',	'01049492839','1','','30000','','2022-05-21');
-INSERT INTO `orders` (`bnum`, `id`, `person`, `tel`, `count`, `address`, `total`, `bname`,`dates`) VALUES ('s001','mem3','거거거','01012345678','1','','30000','','2022-01-21');
-INSERT INTO `orders` (`bnum`, `id`, `person`, `tel`, `count`, `address`, `total`, `bname`,`dates`) VALUES ('s003','mem4','김히하','01043214321','1','','14400','','2022-01-21');
-INSERT INTO `orders` (`bnum`, `id`, `person`, `tel`, `count`, `address`, `total`, `bname`,`dates`) VALUES ('s001','mem3','수수수','01076547654','1','','30000','','2022-01-21');
-INSERT INTO `orders` (`bnum`, `id`, `person`, `tel`, `count`, `address`, `total`, `bname`,`dates`) VALUES ('c001','mem2','수수수','01065436543','1','','10000','','2022-02-21');
-INSERT INTO `orders` (`bnum`, `id`, `person`, `tel`, `count`, `address`, `total`, `bname`,`dates`) VALUES ('c002','mem1','수수수','01043214321','1','','9000','','2022-02-21');
-INSERT INTO `orders` (`bnum`, `id`, `person`, `tel`, `count`, `address`, `total`, `bname`,`dates`) VALUES ('c001','mem4','김김김','01023452345','1','','10000','','2022-02-21');
-INSERT INTO `orders` (`bnum`, `id`, `person`, `tel`, `count`, `address`, `total`, `bname`,`dates`) VALUES ('c001','mem6','김김김','01009870987','1','','10000','','2022-03-21');
-INSERT INTO `orders` (`bnum`, `id`, `person`, `tel`, `count`, `address`, `total`, `bname`,`dates`) VALUES ('c002','mem7','김김김','01098769876','1','','9000','','2022-03-21');
-INSERT INTO `orders` (`bnum`, `id`, `person`, `tel`, `count`, `address`, `total`, `bname`,`dates`) VALUES ('c003','mem8','김김김','01087658765','1','','12000','','2022-04-21');
-INSERT INTO `orders` (`bnum`, `id`, `person`, `tel`, `count`, `address`, `total`, `bname`,`dates`) VALUES ('c002','mem9','박박박','01087658765','1','','9000','','2022-04-21');
-INSERT INTO `orders` (`bnum`, `id`, `person`, `tel`, `count`, `address`, `total`, `bname`,`dates`) VALUES ('a002','mem9','박박박','01076547648','1','','28000','','2022-01-21');
-INSERT INTO `orders` (`bnum`, `id`, `person`, `tel`, `count`, `address`, `total`, `bname`,`dates`) VALUES ('a002','mem8','박박박','01065436543','1','','28000','','2022-01-21');
-INSERT INTO `orders` (`bnum`, `id`, `person`, `tel`, `count`, `address`, `total`, `bname`,`dates`) VALUES ('b001','mem7','박박박','01054325432','1','','15000','','2022-01-21');
-INSERT INTO `orders` (`bnum`, `id`, `person`, `tel`, `count`, `address`, `total`, `bname`,`dates`) VALUES ('b001','mem5','최최최','01054325432','1','','15000','','2022-02-21');
-INSERT INTO `orders` (`bnum`, `id`, `person`, `tel`, `count`, `address`, `total`, `bname`,`dates`) VALUES ('b001','mem3','최최최','01054326323','1','','15000','','2022-02-21');
-INSERT INTO `orders` (`bnum`, `id`, `person`, `tel`, `count`, `address`, `total`, `bname`,`dates`) VALUES ('f001','mem2','최최최','01012346543','1','','20000','','2022-05-21');
-INSERT INTO `orders` (`bnum`, `id`, `person`, `tel`, `count`, `address`, `total`, `bname`,`dates`) VALUES ('f001','mem1','이이이','01054325432','1','','20000','','2022-05-21');
-INSERT INTO `orders` (`bnum`, `id`, `person`, `tel`, `count`, `address`, `total`, `bname`,`dates`) VALUES ('f004','mem1','이이이','01012341234','1','','10000','','2022-05-21');
-INSERT INTO `orders` (`bnum`, `id`, `person`, `tel`, `count`, `address`, `total`, `bname`,`dates`) VALUES ('f004','mem7','이이이','01054325432','1','','10000','','2022-05-21');
-INSERT INTO `orders` (`bnum`, `id`, `person`, `tel`, `count`, `address`, `total`, `bname`,`dates`) VALUES ('f001','mem8','이이이','01065346543','1','','20000','','2022-05-21');
+INSERT INTO `orders` (`bnum`, `id`, `person`, `tel`, `count`, `address`, `total`, `bname`,`dates`) VALUES ('a014', 'mem1', '김하하', 	'01012341234', '1', '강남구', '30000', 'C++', '2022-01-26');
+INSERT INTO `orders` (`bnum`, `id`, `person`, `tel`, `count`, `address`, `total`, `bname`,`dates`) VALUES ('a014', 'mem1', '김나나', 	'01023452345', '1', '서초구', '30000', 'C++', '2022-02-26');
+INSERT INTO `orders` (`bnum`, `id`, `person`, `tel`, `count`, `address`, `total`, `bname`,`dates`) VALUES ('a014', 'mem1', '박다다', 	'01034563456', '1', '서대문구', '30000', 'C++', '2022-03-21');
+INSERT INTO `orders` (`bnum`, `id`, `person`, `tel`, `count`, `address`, `total`, `bname`,`dates`) VALUES ('a015','mem2','하하하',	'01012352432','1','동대문구','20000','C#','2022-04-21');
+INSERT INTO `orders` (`bnum`, `id`, `person`, `tel`, `count`, `address`, `total`, `bname`,`dates`) VALUES ('s001','mem2','나나나',	'01049492839','1','서초구','30000','작별인사','2022-05-21');
+INSERT INTO `orders` (`bnum`, `id`, `person`, `tel`, `count`, `address`, `total`, `bname`,`dates`) VALUES ('s001','mem3','거거거',	'01012345678','1','강변구','30000','작별인사','2022-01-21');
+INSERT INTO `orders` (`bnum`, `id`, `person`, `tel`, `count`, `address`, `total`, `bname`,`dates`) VALUES ('s003','mem4','김히하',	'01043214321','1','강북구','14400','나로서 충분히 괜찮은 사람','2022-01-21');
+INSERT INTO `orders` (`bnum`, `id`, `person`, `tel`, `count`, `address`, `total`, `bname`,`dates`) VALUES ('s001','mem3','수수수',	'01076547654','1','강서구','30000','작별인사','2022-01-21');
+INSERT INTO `orders` (`bnum`, `id`, `person`, `tel`, `count`, `address`, `total`, `bname`,`dates`) VALUES ('c001','mem2','수수수',	'01065436543','1','종로구','10000','수학의 정석','2022-02-21');
+INSERT INTO `orders` (`bnum`, `id`, `person`, `tel`, `count`, `address`, `total`, `bname`,`dates`) VALUES ('c002','mem1','수수수',	'01043214321','1','종로구','9000','국어의 정석','2022-02-21');
+INSERT INTO `orders` (`bnum`, `id`, `person`, `tel`, `count`, `address`, `total`, `bname`,`dates`) VALUES ('c001','mem4','김김김',	'01023452345','1','종로구','10000','수학의 정석','2022-02-21');
+INSERT INTO `orders` (`bnum`, `id`, `person`, `tel`, `count`, `address`, `total`, `bname`,`dates`) VALUES ('c001','mem6','김김김',	'01009870987','1','일산시','10000','수학의 정석','2022-03-21');
+INSERT INTO `orders` (`bnum`, `id`, `person`, `tel`, `count`, `address`, `total`, `bname`,`dates`) VALUES ('c002','mem7','김김김',	'01098769876','1','일산시','9000','국어의 정석','2022-03-21');
+INSERT INTO `orders` (`bnum`, `id`, `person`, `tel`, `count`, `address`, `total`, `bname`,`dates`) VALUES ('c003','mem8','김김김',	'01087658765','1','일산시','12000','수학의 정석2','2022-04-21');
+INSERT INTO `orders` (`bnum`, `id`, `person`, `tel`, `count`, `address`, `total`, `bname`,`dates`) VALUES ('c002','mem9','박박박',	'01087658765','1','은평구','9000','국어의 정석','2022-04-21');
+INSERT INTO `orders` (`bnum`, `id`, `person`, `tel`, `count`, `address`, `total`, `bname`,`dates`) VALUES ('a002','mem9','박박박',	'01076547648','1','은평구','28000','RedHat Fedora 리눅스서버','2022-01-21');
+INSERT INTO `orders` (`bnum`, `id`, `person`, `tel`, `count`, `address`, `total`, `bname`,`dates`) VALUES ('a002','mem8','박박박',	'01065436543','1','은평구','28000','RedHat Fedora 리눅스서버','2022-01-21');
+INSERT INTO `orders` (`bnum`, `id`, `person`, `tel`, `count`, `address`, `total`, `bname`,`dates`) VALUES ('b001','mem7','박박박',	'01054325432','1','서대문구','15000','정보처리산업기사 실기','2022-01-21');
+INSERT INTO `orders` (`bnum`, `id`, `person`, `tel`, `count`, `address`, `total`, `bname`,`dates`) VALUES ('b001','mem5','최최최',	'01054325432','1','강남구','15000','정보처리산업기사 실기','2022-02-21');
+INSERT INTO `orders` (`bnum`, `id`, `person`, `tel`, `count`, `address`, `total`, `bname`,`dates`) VALUES ('b001','mem3','최최최',	'01054326323','1','강변구','15000','정보처리산업기사 실기','2022-02-21');
+INSERT INTO `orders` (`bnum`, `id`, `person`, `tel`, `count`, `address`, `total`, `bname`,`dates`) VALUES ('f001','mem2','최최최',	'01012346543','1','강남구','20000','JLPT한권으로끝내기','2022-04-21');
+INSERT INTO `orders` (`bnum`, `id`, `person`, `tel`, `count`, `address`, `total`, `bname`,`dates`) VALUES ('f001','mem1','이이이',	'01054325432','1','강동구','20000','JLPT한권으로끝내기','2022-04-21');
+INSERT INTO `orders` (`bnum`, `id`, `person`, `tel`, `count`, `address`, `total`, `bname`,`dates`) VALUES ('f004','mem1','이이이',	'01012341234','1','강동구','10000','HSK5급','2022-05-21');
+INSERT INTO `orders` (`bnum`, `id`, `person`, `tel`, `count`, `address`, `total`, `bname`,`dates`) VALUES ('f004','mem7','이이이',	'01054325432','1','강북구','10000','HSK5급','2022-05-21');
+INSERT INTO `orders` (`bnum`, `id`, `person`, `tel`, `count`, `address`, `total`, `bname`,`dates`) VALUES ('f001','mem8','이이이',	'01065346543','1','강북구','20000','JLPT한권으로끝내기','2022-05-21');
 
 
 						/* now() 는 오늘 날짜 */

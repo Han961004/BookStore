@@ -188,7 +188,7 @@ public class SaleChart extends JFrame{
 		for(int i = 1 ; i <13 ; i ++) {
 			
 			try {
-				sql = "select sum(count) from orders where month(dates) = "+ i + "and bnum like 'b%' and year(dates) = " + years + " ;";
+				sql = "select sum(count) from orders where month(dates) = "+ i + " and bnum like 'b%' and year(dates) = " + years + " ;";
 				pstmt = con.prepareStatement(sql);
 				rs = pstmt.executeQuery();
 				
@@ -244,7 +244,7 @@ public class SaleChart extends JFrame{
 		for(int i = 1 ; i <13 ; i ++) {
 			
 			try {
-				sql = "select sum(count) from orders where month(dates) = "+ i + "and bnum like 'f%' and year(dates) = " + years + " ;";		
+				sql = "select sum(count) from orders where month(dates) = "+ i + " and bnum like 'f%' and year(dates) = " + years + " ;";		
 				pstmt = con.prepareStatement(sql);
 				rs = pstmt.executeQuery();
 				
