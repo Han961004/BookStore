@@ -74,7 +74,13 @@ public class BookOrder_SQL점검 extends JFrame{
 		JLabel lbl9 = new JLabel("주문수량 :");
 		lbl9.setBounds(150, 290, 120, 20);
 		JTextField text9 = new JTextField(20);
-		text9.setBounds(220, 290, 200, 20);
+		text9.setBounds(220, 290, 50, 20);
+		
+		JLabel lbl10 = new JLabel("합계 :");
+		lbl10.setBounds(280, 290, 120, 20);
+		JTextField text10 = new JTextField(20);
+		text10.setBounds(320, 290, 100, 20);
+		text10.setEnabled(false);
 		
 		JLabel lbl6 = new JLabel("받는사람 :");
 		lbl6.setBounds(150, 330, 120, 20);
@@ -118,7 +124,8 @@ public class BookOrder_SQL점검 extends JFrame{
 		
 		window1.add(btn7);
 		window1.add(btn6);
-		
+		window1.add(text10);
+		window1.add(lbl10);
 		window1.add(btn5);
 	    window1.setVisible(true);
 	    
@@ -145,7 +152,7 @@ public class BookOrder_SQL점검 extends JFrame{
 			String tel = text7.getText();
 			String count = text9.getText();
 			String address = text8.getText();
-			
+			String total = text10.getText();
 			
 			
 			if(e.getSource() == btn5) {			// 확인 누르면
@@ -184,9 +191,10 @@ public class BookOrder_SQL점검 extends JFrame{
 	    		PreparedStatement pstmt1 = null;
 	    		
 	    		int ppap ;
+	    		int ttotal;
 	    		
 	    		try {
-	    			sql = "INSERT INTO `orders` (`bnum`, `id`, `person`, `tel`, `count`, `address`) VALUES (?, ?, ?, ?, ?,?)";
+	    			sql = "INSERT INTO `orders` (`bnum`, `id`, `person`, `tel`, `count`, `address`, `total`) VALUES (?, ?, ?, ?, ?,?,?)";
 		    		pstmt = con.prepareStatement(sql);
 		    		
 		    		pstmt.setString(1, bnum);
@@ -194,9 +202,11 @@ public class BookOrder_SQL점검 extends JFrame{
 	    			pstmt.setString(3, person);
 	    			pstmt.setString(4, tel);
 	    			ppap = Integer.parseInt(text5.getText()) - Integer.parseInt(text9.getText());
+	    			ttotal = Integer.parseInt(text9.getText()) * Integer.parseInt(text4.getText());
+	    			text10.setText(String.valueOf(ttotal));
 	    			pstmt.setInt(5, Integer.parseInt(text9.getText()));
 	    			pstmt.setString(6, address);
-	    			
+	    			pstmt.setInt(7, ttotal);
 	    			
 	    			
 	    			////////////////////////
@@ -214,7 +224,9 @@ public class BookOrder_SQL점검 extends JFrame{
 	    				JOptionPane.showMessageDialog(this, "구매 성공", "구매성공", 1);
 	    				pstmt.execute();
 	    				pstmt1.execute();
-	    			}	
+	    			}
+	    			
+	    			
 				} catch (SQLException e1) {
 					JOptionPane.showMessageDialog(this, "구매 실패", "구매실패", 0);
 					e1.printStackTrace();

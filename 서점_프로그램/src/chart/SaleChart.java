@@ -26,23 +26,41 @@ public class SaleChart extends JFrame{
 	public SaleChart() throws SQLException {
 		
 		
-		XYChart chart2 = new XYChartBuilder().xAxisTitle("월별").width(600).height(400).build();
+		XYChart chart2 = new XYChartBuilder().title("월별 판매 권수").xAxisTitle("월별").width(600).height(400).build();
 		XYSeries series2 = chart2.addSeries("판매권수", getRandomWalk1(12));
 		series2.setMarker(SeriesMarkers.DIAMOND);
 		series2.setLineColor(new Color(255,0,0));
 		
+		JPanel panel2 = new XChartPanel(chart2);
+		JFrame f2 = new JFrame();
+		f2.setBounds(100, 100, WIDTH, HEIGHT);
+		f2.add(panel2);
+		f2.pack();
+		f2.setVisible(true);
+		f2.setResizable(false);
 		
-		XYChart chart1 = new XYChartBuilder().xAxisTitle("월별").width(600).height(400).build();
+		/////////////////////
+		
+		
+		
+		
+		XYChart chart1 = new XYChartBuilder().title("월별 판매 금액").xAxisTitle("월별").width(600).height(400).build();
 		XYSeries series1 = chart1.addSeries("판매금액", getRandomWalk2(12));
 		series1.setMarker(SeriesMarkers.DIAMOND);
 		series1.setLineColor(new Color(0,255,0));
 		
-		
+		JPanel panel1 = new XChartPanel(chart1);
+		JFrame f1 = new JFrame();
+		f1.setBounds(200, 200, WIDTH, HEIGHT);
+		f1.add(panel1);
+		f1.pack();
+		f1.setVisible(true);
+		f1.setResizable(false);
 		
 		
 		/////////////////					권수 종류별 할수 있겠다
 		
-		XYChart chart3 = new XYChartBuilder().xAxisTitle("월별").width(600).height(400).build();
+		XYChart chart3 = new XYChartBuilder().title("종류별 판매 수").xAxisTitle("월별").width(600).height(400).build();
 		chart3.addSeries("교보재", getRandomWalka(12));
 		chart3.addSeries("자격증", getRandomWalkb(12));
 		chart3.addSeries("참고서", getRandomWalkc(12));
@@ -52,31 +70,13 @@ public class SaleChart extends JFrame{
 		
 		JPanel panel3 = new XChartPanel(chart3);
 		JFrame f3 = new JFrame();
+		f3.setBounds(300, 300, WIDTH, HEIGHT);
 		f3.add(panel3);
 		f3.pack();
 		f3.setVisible(true);
 		f3.setResizable(false);
 		
 		
-		
-		/////////////////
-		
-		
-		
-		
-		JPanel panel1 = new XChartPanel(chart1);
-		JPanel panel2 = new XChartPanel(chart2);
-		JFrame f1 = new JFrame();
-		JFrame f2 = new JFrame();
-		
-		f1.add(panel1);
-		f1.pack();
-		f1.setVisible(true);
-		f1.setResizable(false);
-		f2.add(panel2);
-		f2.pack();
-		f2.setVisible(true);
-		f2.setResizable(false);
 		
 	}
 	
