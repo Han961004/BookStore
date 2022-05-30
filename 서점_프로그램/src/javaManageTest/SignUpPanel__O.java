@@ -61,7 +61,7 @@ public class SignUpPanel__O extends JPanel {
 		ActionListener listener1 = e -> {
 			
 			JButton btn = (JButton) e.getSource();
-			__FrameTest__ test = (__FrameTest__) btn.getTopLevelAncestor();
+			__Demo__ test = (__Demo__) btn.getTopLevelAncestor();
 			
 			if(e.getSource() == btn1) {			// 회원가입 누르면
 				

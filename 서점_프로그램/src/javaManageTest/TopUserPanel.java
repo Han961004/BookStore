@@ -42,7 +42,7 @@ public class TopUserPanel extends JPanel {
 
 			JButton btn = (JButton) e.getSource();
 
-			__FrameTest__ test = (__FrameTest__) btn.getTopLevelAncestor();
+			__Demo__ test = (__Demo__) btn.getTopLevelAncestor();
 
 			switch (btn.getText()) {
 			case "도서목록":

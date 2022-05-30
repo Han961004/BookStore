@@ -12,14 +12,14 @@ import javax.swing.JLabel;
 import javax.swing.JPanel;
 import javax.swing.JScrollPane;
 
-public class __FrameTest__ extends JFrame {
+public class __Demo__ extends JFrame {
 	TopUserPanel top1 = new TopUserPanel();
 	TopAdminPanel top2 = new TopAdminPanel();
 	Container c;
 	
 	
 	
-	public __FrameTest__() {
+	public __Demo__() {
 		
 		c = getContentPane();
 		
@@ -75,7 +75,7 @@ public class __FrameTest__ extends JFrame {
 	}
 	
 	public static void main(String[] args) {
-		new __FrameTest__();
+		new __Demo__();
 	}
 
 }

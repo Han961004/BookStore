@@ -16,6 +16,7 @@ import javax.swing.JFrame;
 import javax.swing.JLabel;
 import javax.swing.JOptionPane;
 import javax.swing.JPanel;
+import javax.swing.JPasswordField;
 import javax.swing.JTextField;
 
 import SQL.connection;
@@ -39,9 +40,14 @@ public class LoginClick extends JPanel {
 		
 		JLabel lbl2 = new JLabel("비밀번호 :");
 		lbl2.setBounds(150, 70, 120, 20);
-		JTextField text2 = new JTextField(20);
-		text2.setBounds(220, 70, 120, 20);
+//		JTextField text2 = new JTextField(20);
+//		text2.setBounds(220, 70, 120, 20);
 
+		JPasswordField text3 = new JPasswordField(20);
+		text3.setBounds(220, 70, 120, 20);
+		
+		
+		
 		JButton btn1 = new JButton("사용자 로그인");
 		btn1.setBounds(80, 150, 120, 20);
 		JButton btn2 = new JButton("관리자 로그인");
@@ -53,7 +59,8 @@ public class LoginClick extends JPanel {
 		add(lbl1);
 		add(text1);
 		add(lbl2);
-		add(text2);
+//		add(text2);
+		add(text3);
 		add(btn1);
 		add(btn2);
 		add(btn3);
@@ -63,9 +70,9 @@ public class LoginClick extends JPanel {
 		ActionListener listener1 = e -> {
 			
 			JButton btn = (JButton) e.getSource();
-			__FrameTest__ test = (__FrameTest__) btn.getTopLevelAncestor();
+			__Demo__ test = (__Demo__) btn.getTopLevelAncestor();
 			String id = text1.getText();
-			String pw = text2.getText();
+			String pw = text3.getText();
 			
 			// 사용자 로그인 누르면
 			if(e.getSource() == btn1) {			
