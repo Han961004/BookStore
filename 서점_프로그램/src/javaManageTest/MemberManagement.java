@@ -45,7 +45,7 @@ public class MemberManagement extends JPanel {
 		
 		List li = new List();
 		li.setBounds(0, 130, 450, 150);
-		li.add(" < 이름 | 나이 | 패스워드 | 아이디 >                         회원 리스트   ");
+		li.add("     이름   |   나이  |   패스워드   |   아이디                          회원 리스트   ");
 		
 		add(l1);
 		add(tf1);
@@ -70,7 +70,7 @@ public class MemberManagement extends JPanel {
     		
     		while (rs.next()) {
     			
-    			String str = "  " +  rs.getNString(3) + "  |  " + rs.getInt(4) +  "  |  " + rs.getNString(2) + "  |  " + rs.getNString(1) ;
+    			String str = "  " +  rs.getNString(3) + "  |       " + rs.getInt(4) +  "  |           " + rs.getNString(2) + "  |  " + rs.getNString(1) ;
                 li.add(str); // 리스트에 데이터를 추가한다.
     		}
 

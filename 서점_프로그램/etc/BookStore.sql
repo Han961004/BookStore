@@ -47,21 +47,13 @@ create table books(
     /*a는 교보재 c는 참고서 f는 외국어 b는 자격증 s는 소셜대중책 // 번호 제목 저자 출판사 가격 현재고*/
 insert into books value ('a001', '쉽게배우는자바프로그래밍', '우종정', '한빛아카데미', '29000', '03');
 insert into books value ('a002', 'RedHat Fedora 리눅스서버', '우재남', '한빛미디어', '28000', '01');
-insert into books value ('f003', '해커스 토익', '해커스', '해커스 어학연구소', '11900', '10');
-INSERT INTO  books value ('b001', '정보처리산업기사 실기','김가가','폴리텍','15000','04');					
-INSERT INTO  books value ('b004', '정보처리산업기사 필기','김나가','폴리텍','18000','04');
 INSERT INTO  books value ('a003', '정보통신개론','김가다','폴리텍','30000','05');
-INSERT INTO  books value ('a002', 'R코딩','이가가','폴리텍','9000','05');
-INSERT INTO  books value ('a020', 'PHP프로그래밍','김이가','폴리텍','16000','05');
 INSERT INTO  books value ('a004', '데이터베이스','박가가','폴리텍','20000','05');
 INSERT INTO  books value ('a005', '아두이노','하가가','폴리텍','5000','05');
 INSERT INTO  books value ('a006', '컴퓨터개론','김가나','폴리텍','15000','05');
-INSERT INTO  books value ('b007', '리눅스마스터2급','바바가','폴리텍','20000','05');
-INSERT INTO  books value ('b008', '리눅스마스터1급','김나나','폴리텍','30000','05');
 INSERT INTO  books value ('a009', '안드로이드 프로그래밍','구하하','폴리텍','40000','05');
 INSERT INTO  books value ('a010', '인공지능개론','구나나','폴리텍','13000','05');
 INSERT INTO  books value ('a011', 'JAVA프로그래밍','최나나','폴리텍','20000','05');
-INSERT INTO  books value ('f001', 'JLPT한권으로끝내기','최최이','폴리텍','20000','05');
 INSERT INTO books value('a012', '컴퓨팅사고with파이썬','최최이','폴리텍','10000','05');
 INSERT INTO books value('a013', '프로그래밍C','최최이','폴리텍','40000','05');
 INSERT INTO books value('a014', 'C++','최최이','폴리텍','30000','05');
@@ -70,17 +62,26 @@ INSERT INTO books value('a016', '정보통신의 이해','최최이','폴리텍'
 INSERT INTO books value('a017', '모두의 데이터분석','최최이','폴리텍','50000','05');
 INSERT INTO books value('a018', '데이터베이스 개론','최최이','폴리텍','20000','05');
 INSERT INTO books value('a019', 'JAVA200제','최최이','폴리텍','30000','05');
+INSERT INTO  books value ('a020', 'R코딩','이가가','폴리텍','9000','05');
+INSERT INTO  books value ('a021', 'PHP프로그래밍','김이가','폴리텍','16000','05');
+
+INSERT INTO  books value ('b001', '정보처리산업기사 실기','김가가','폴리텍','15000','04');					
+INSERT INTO  books value ('b004', '정보처리산업기사 필기','김나가','폴리텍','18000','04');
+INSERT INTO  books value ('b007', '리눅스마스터2급','바바가','폴리텍','20000','05');
+INSERT INTO  books value ('b008', '리눅스마스터1급','김나나','폴리텍','30000','05');
+
+INSERT INTO books value ('f001', '한권으로 끝내기 영어', '김호연', '나무옆의자', '12600','03');
 INSERT INTO books value('f002', 'HSK6급','최최이','폴리텍','20000','05');
+insert into books value ('f003', '해커스 토익', '해커스', '해커스 어학연구소', '11900', '10');
 INSERT INTO books value('f004', 'HSK5급','최최이','폴리텍','10000','05');
 INSERT INTO books value('f005', '스페인어 마스터','최최이','폴리텍','10000','05');
-INSERT INTO books value ('s001', '작별인사', '김영하','최최이','30000','05');
-
 INSERT INTO books value ('f006', '일본어 문법 사전', '김호연', '나무옆의자', '12600','10');
 INSERT INTO books value ('f007', '중국어 문법 사전', '김호연', '나무옆의자', '12600','10');
 INSERT INTO books value ('f008', '한권으로 끝내기 중국어', '김호연', '나무옆의자', '12600','03');
 INSERT INTO books value ('f009', '한권으로 끝내기 일본어', '김호연', '나무옆의자', '12600','03');
-INSERT INTO books value ('f001', '한권으로 끝내기 영어', '김호연', '나무옆의자', '12600','03');
+INSERT INTO  books value ('f010', 'JLPT한권으로끝내기','최최이','폴리텍','20000','05');
 
+INSERT INTO books value ('s001', '작별인사', '김영하','최최이','30000','05');
 INSERT INTO books value ('s003', '나로서 충분히 괜찮은 사람', '김재식', '북로망스', '14400','05');
 INSERT INTO books value ('s004', '기분을 관리하면 인생이 관리된다', '김다슬', '클라우디아', '15840','07');
 INSERT INTO books value ('s005', '변화하는 세계 질서', '송이루', '한빛비즈', '34200','06');

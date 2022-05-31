@@ -39,6 +39,9 @@ public class OrdersList extends JPanel {
 		li.removeAll(); // 리스트 내용을 전부 제거한다.
 
 		
+		String str2 = "주문번호| 책번호|  아이디 |  수취인  |        연락처       |  수량   |      주   소";
+		li.add(str2);
+		
 		
 		try{
         	Connection con = connection.makeConnection();
@@ -60,7 +63,7 @@ public class OrdersList extends JPanel {
     			String f1 = "";
     			String ff1 ="";
     			String ll = "";
-    			String o = "";
+    			String v = "";
     			
     			if (Math.log10(rs.getInt(1))+1 < 1) {			// 혹시 4자리 가격이면
     				ll = "    ";
@@ -73,7 +76,11 @@ public class OrdersList extends JPanel {
     				ff1 = " ";
     			}
     			
-    			String str = "  " + ll + rs.getInt(1) + "  |  " + ff1 + rs.getString(2) + "  |  " + rs.getNString(3) + "  |  " + rs.getNString(4) + "  |  " + rs.getNString(5) + "  |  " + rs.getInt(6) + "  |  " + rs.getNString(7);
+    			if (rs.getInt(6) < 10) {			// 00권 맞추기
+    				v = "0";
+    			}
+    			
+    			String str = "         " + ll + rs.getInt(1) + "  |  " + ff1 + rs.getString(2) + "  |  " + rs.getNString(3) + "  |  " + rs.getNString(4) + "  |  " + rs.getNString(5) + "  |  " + v + rs.getInt(6) + " 권  |  " + rs.getNString(7);
                 li.add(str); // 리스트에 데이터를 추가한다.
     		}
 
@@ -96,46 +103,61 @@ public class OrdersList extends JPanel {
 			
 			if(e.getSource() == btn1) {	
 				
+				
+				
 				Connection con = connection.makeConnection();
 	    		String sql = null;
 	    		ResultSet rs = null; 
 	    		PreparedStatement pstmt = null;
-
+	    		
+	    		
     			sql = "select * from orders where id = '" + id + "' order by onum desc ;";
 	    		
 	    		try {
 		    		pstmt = con.prepareStatement(sql);
 		    		rs = pstmt.executeQuery();
 		    		
+		    		
+		    		
 		    		if (rs.next()) {
 		    			
-    	    			
+		    			
+			    		
+		    			
 	    				if (rs.getString(3).contentEquals(id)) {
 	    					
 	    					
 	    					
 	    					
 	    					String f1 = "";
-        	    			String ff1 ="";
-        	    			String ll = "";
-        	    			String o = "";
-        	    			f1 = rs.getString(2);
-        	    			if(f1.startsWith("f")) {
-        	    				ff1 = " ";
-        	    			}
-        	    			if (Math.log10(rs.getInt(1))+1 < 1) {			// 혹시 4자리 가격이면
-        	    				ll = "    ";
-        	    			}else if (Math.log10(rs.getInt(1))+1 < 2) {
-        	    				ll = "  ";
-        	    			}
+	    	    			String ff1 ="";
+	    	    			String ll = "";
+	    	    			String v = "";
+	    	    			
+	    	    			if (Math.log10(rs.getInt(1))+1 < 1) {			// 혹시 4자리 가격이면
+	    	    				ll = "    ";
+	    	    			}else if (Math.log10(rs.getInt(1))+1 < 2) {
+	    	    				ll = "  ";
+	    	    			}
+	    	    			
+	    	    			f1 = rs.getString(2);
+	    	    			if(f1.startsWith("f")) {
+	    	    				ff1 = " ";
+	    	    			}
+	    	    			
+	    	    			if (rs.getInt(6) < 10) {			// 00권 맞추기
+	    	    				v = "0";
+	    	    			}
+	    	    			
 	    	    			li.removeAll();				// 버튼 누를 때 마다 리스트 초기화
 	    	    			
-	    	    			
+	    	    			li.add(str2);
+	    		    		
 	    	    			
 	    					
 	    					// 밑에랑 합치면 첫번 째 튜플 안나옴			if (rs.next()) 에서 이미 한번 써버려서 
-	    	    			String str = "  " + ll + rs.getInt(1) + "  |  " + ff1 + rs.getString(2) + "  |  " + rs.getNString(3) + "  |  " + rs.getNString(4) + "  |  " + rs.getNString(5) + "  |  " + rs.getInt(6) + "  |  " + rs.getNString(7);
-	    	                li.add(str);
+	    	    			String str = "         " + ll + rs.getInt(1) + "  |  " + ff1 + rs.getString(2) + "  |  " + rs.getNString(3) + "  |  " + rs.getNString(4) + "  |  " + rs.getNString(5) + "  |  " + v + rs.getInt(6) + " 권  |  " + rs.getNString(7);
+			                 li.add(str);
 	    					
 	    					while(rs.next()) {
 	    						
@@ -143,26 +165,28 @@ public class OrdersList extends JPanel {
 	    						
 	    						
 	        	    			
-	    						String f11 = "";
-	        	    			String ff11 ="";
-	        	    			String ll1 = "";
-	        	    			String o1 = "";
-	        	    			f11 = rs.getString(2);
-	        	    			if(f11.startsWith("f")) {
-	        	    				ff11 = " ";
-	        	    			}
-	        	    			if (Math.log10(rs.getInt(1))+1 < 1) {			// 혹시 4자리 가격이면
-	        	    				ll1 = "    ";
-	        	    			}else if (Math.log10(rs.getInt(1))+1 < 2) {
-	        	    				ll1 = "  ";
-	        	    			}
+	    		    			
+	    		    			if (Math.log10(rs.getInt(1))+1 < 1) {			// 혹시 4자리 가격이면
+	    		    				ll = "    ";
+	    		    			}else if (Math.log10(rs.getInt(1))+1 < 2) {
+	    		    				ll = "  ";
+	    		    			}
+	    		    			
+	    		    			f1 = rs.getString(2);
+	    		    			if(f1.startsWith("f")) {
+	    		    				ff1 = " ";
+	    		    			}
+	    		    			
+	    		    			if (rs.getInt(6) < 10) {			// 00권 맞추기
+	    		    				v = "0";
+	    		    			}
 	        	    			
 	        	    			
 	        	    			
 	        	    			
 	        	    			
 	        	    			
-	    						String str1 = "  " + ll1 + rs.getInt(1) + "  |  " + ff11 + rs.getString(2) + "  |  " + rs.getNString(3) + "  |  " + rs.getNString(4) + "  |  " + rs.getNString(5) + "  |  " + rs.getInt(6) + "  |  " + rs.getNString(7);
+	        	    			String str1 = "         " + ll + rs.getInt(1) + "  |  " + ff1 + rs.getString(2) + "  |  " + rs.getNString(3) + "  |  " + rs.getNString(4) + "  |  " + rs.getNString(5) + "  |  " + v + rs.getInt(6) + " 권  |  " + rs.getNString(7);
 	    		                li.add(str1); // 리스트에 데이터를 추가한다.
 	    					}
 	    					JOptionPane.showMessageDialog(this, "불러오기 성공", "불러오기성공", 1);
@@ -187,25 +211,33 @@ public class OrdersList extends JPanel {
 		    		pstmt = con.prepareStatement(sql);
 		    		
 		    		rs = pstmt.executeQuery();
+		    		
+		    		li.add(str2);
+		    		
 		    		while (rs.next()) {
 		    			
 		    			
-		    			String f11 = "";
-    	    			String ff11 ="";
-    	    			String ll1 = "";
-    	    			String o1 = "";
-    	    			f11 = rs.getString(2);
-    	    			if(f11.startsWith("f")) {
-    	    				ff11 = " ";
-    	    			}
-    	    			if (Math.log10(rs.getInt(1))+1 < 1) {			// 혹시 4자리 가격이면
-    	    				ll1 = "    ";
-    	    			}else if (Math.log10(rs.getInt(1))+1 < 2) {
-    	    				ll1 = "  ";
-    	    			}
-    	    			
-    	    			
-    	    			String str = "  " + ll1 + rs.getInt(1) + "  |  " + ff11 + rs.getString(2) + "  |  " + rs.getNString(3) + "  |  " + rs.getNString(4) + "  |  " + rs.getNString(5) + "  |  " + rs.getInt(6) + "  |  " + rs.getNString(7);
+		    			String f1 = "";
+		    			String ff1 ="";
+		    			String ll = "";
+		    			String v = "";
+		    			
+		    			if (Math.log10(rs.getInt(1))+1 < 1) {			// 혹시 4자리 가격이면
+		    				ll = "    ";
+		    			}else if (Math.log10(rs.getInt(1))+1 < 2) {
+		    				ll = "  ";
+		    			}
+		    			
+		    			f1 = rs.getString(2);
+		    			if(f1.startsWith("f")) {
+		    				ff1 = " ";
+		    			}
+		    			
+		    			if (rs.getInt(6) < 10) {			// 00권 맞추기
+		    				v = "0";
+		    			}
+		    			
+		    			String str = "         " + ll + rs.getInt(1) + "  |  " + ff1 + rs.getString(2) + "  |  " + rs.getNString(3) + "  |  " + rs.getNString(4) + "  |  " + rs.getNString(5) + "  |  " + v + rs.getInt(6) + " 권  |  " + rs.getNString(7);
 		                li.add(str); // 리스트에 데이터를 추가한다.
 		    		}
 					JOptionPane.showMessageDialog(this, "책 불러오기 성공", "등록성공", 1);

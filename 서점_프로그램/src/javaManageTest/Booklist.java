@@ -50,6 +50,11 @@ public class Booklist extends JPanel {
 		p.add(li);
 		add(p);
 		
+		
+		String str2 = "  번호  |   재고   |   저  자   |     가   격     |  도서 제목";
+		li.add(str2);
+		
+		
 		try{
         	Connection con = connection.makeConnection();
     		

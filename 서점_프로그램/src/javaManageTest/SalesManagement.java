@@ -69,6 +69,8 @@ public class SalesManagement extends JPanel {
 			
 			if(e.getSource() == btn1) {			// 검색 버튼	 누르면
 				
+				
+				
 				li.removeAll();
 				
 				Connection con = connection.makeConnection();
@@ -88,6 +90,9 @@ public class SalesManagement extends JPanel {
 	    			
 	    			int a = 0;
 	    			int b = 0;
+	    			
+	    			String str2 = " 주문번호 |    주문날짜   |   수량   |  합계가격   |  도서 제목";
+					li.add(str2);
 	    			
 	    			while (rs.next()) {
 	    				
