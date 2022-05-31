@@ -127,7 +127,7 @@ public class SalesManagement extends JPanel {
 	    			li.add("");
 	    			li.add(String.format("  총 판매 권 수 : %20d 권          |  총 판매 금액 : %20d 원", a, b));
 	    			
-					JOptionPane.showMessageDialog(this, "꿀궭휅뷃엟럻", "성공", 1);
+					JOptionPane.showMessageDialog(this, "조회 성공", "성공", 1);
 
 				} catch (Exception e1) {
 					JOptionPane.showMessageDialog(this, "년월을 다시 확인해주세요", "에러", 0);

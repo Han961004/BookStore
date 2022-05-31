@@ -85,7 +85,7 @@ public class OrdersList extends JPanel {
     		}
 
         }catch(SQLException sqle){
-			JOptionPane.showMessageDialog(this, "책 불러오기 실패", "불러오기 실패", 0);
+			JOptionPane.showMessageDialog(this, "불러오기 실패", "조회실패", 0);
         }
 		
 		
@@ -189,11 +189,11 @@ public class OrdersList extends JPanel {
 	        	    			String str1 = "         " + ll + rs.getInt(1) + "  |  " + ff1 + rs.getString(2) + "  |  " + rs.getNString(3) + "  |  " + rs.getNString(4) + "  |  " + rs.getNString(5) + "  |  " + v + rs.getInt(6) + " 권  |  " + rs.getNString(7);
 	    		                li.add(str1); // 리스트에 데이터를 추가한다.
 	    					}
-	    					JOptionPane.showMessageDialog(this, "불러오기 성공", "불러오기성공", 1);
+	    					JOptionPane.showMessageDialog(this, "불러오기 성공", "조회성공", 1);
 	    				}
 		    		}
 				} catch (SQLException e1) {
-					JOptionPane.showMessageDialog(this, "불러오기 실패", "불러오기실패", 0);
+					JOptionPane.showMessageDialog(this, "불러오기 실패", "조회실패", 0);
 					// TODO Auto-generated catch block
 					e1.printStackTrace();
 				}
@@ -240,10 +240,10 @@ public class OrdersList extends JPanel {
 		    			String str = "         " + ll + rs.getInt(1) + "  |  " + ff1 + rs.getString(2) + "  |  " + rs.getNString(3) + "  |  " + rs.getNString(4) + "  |  " + rs.getNString(5) + "  |  " + v + rs.getInt(6) + " 권  |  " + rs.getNString(7);
 		                li.add(str); // 리스트에 데이터를 추가한다.
 		    		}
-					JOptionPane.showMessageDialog(this, "책 불러오기 성공", "등록성공", 1);
+					JOptionPane.showMessageDialog(this, "불러오기 성공", "조회성공", 1);
 
 		        }catch(SQLException sqle){
-					JOptionPane.showMessageDialog(this, "책 불러오기 성공", "등록성공", 0);
+					JOptionPane.showMessageDialog(this, "불러오기 성공", "조회실패", 0);
 
 		        }
 			}
