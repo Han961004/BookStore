@@ -7,12 +7,14 @@ import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.List;
 
 import javax.swing.JFrame;
 import javax.swing.JPanel;
 import javax.swing.WindowConstants;
 
+import org.knowm.xchart.style.Styler.ChartTheme;
 import org.knowm.xchart.style.markers.SeriesMarkers;
 
 import SQL.connection;
@@ -60,13 +62,27 @@ public class SaleChart extends JFrame{
 		
 		/////////////////					권수 종류별 할수 있겠다
 		
-		XYChart chart3 = new XYChartBuilder().title("종류별 판매 수").xAxisTitle("월별").width(600).height(400).build();
-		chart3.addSeries("교보재", getRandomWalka(12));
-		chart3.addSeries("자격증", getRandomWalkb(12));
-		chart3.addSeries("참고서", getRandomWalkc(12));
-		chart3.addSeries("외국어", getRandomWalkf(12));
-		chart3.addSeries("소셜대중책", getRandomWalks(12));
+//		XYChart chart3 = new XYChartBuilder().title("종류별 판매 수").xAxisTitle("월별").width(600).height(400).build();
+//		chart3.addSeries("교보재", getRandomWalka(12));
+//		chart3.addSeries("자격증", getRandomWalkb(12));
+//		chart3.addSeries("참고서", getRandomWalkc(12));
+//		chart3.addSeries("외국어", getRandomWalkf(12));
+//		chart3.addSeries("소셜대중책", getRandomWalks(12));
 		
+		
+		/////
+		int [] arr = { 1,2,3,4,5,6,7,8,9,10,11,12} ;
+		CategoryChart chart3 = new CategoryChartBuilder().width(600).height(400).title("월별 판매 부수").xAxisTitle("월").yAxisTitle("판매부수").theme(ChartTheme.XChart).build();
+		chart3.addSeries("교보재", arr, getRandomWalka(12));
+	    chart3.addSeries("자격증", arr, getRandomWalkb(12));
+		chart3.addSeries("참고서", arr, getRandomWalkc(12));
+		chart3.addSeries("외국어", arr, getRandomWalkf(12));
+		chart3.addSeries("소셜대중책", arr, getRandomWalks(12));
+		
+		
+		
+		
+		////////
 		
 		JPanel panel3 = new XChartPanel(chart3);
 		JFrame f3 = new JFrame();
@@ -75,9 +91,6 @@ public class SaleChart extends JFrame{
 		f3.pack();
 		f3.setVisible(true);
 		f3.setResizable(false);
-		
-		
-		
 	}
 	
 	//		판매 권수ㅜㅜㅜㅜㅜㅜㅜㅜㅜㅜㅜㅜㅜㅜㅜㅜㅜㅜㅜㅜㅜㅜㅜㅜ
